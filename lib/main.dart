@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const NumberTriviaApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+/// {@template number_trivia_app}
+/// Root entry class for application.
+/// {@endtemplate}
+class NumberTriviaApp extends StatelessWidget {
+  /// {@macro number_trivia_app}
+  const NumberTriviaApp({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
