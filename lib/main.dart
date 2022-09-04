@@ -20,11 +20,11 @@ void main() async {
   );
 }
 
-/// {@template number_trivia_app_state_provider}
+/// {@template number_trivia_app}
 /// Root entry class for application that creates all core blocs.
 /// {@endtemplate}
 class NumberTriviaApp extends StatelessWidget {
-  /// {@macro number_trivia_app_state_provider}
+  /// {@macro number_trivia_app}
   const NumberTriviaApp({
     super.key,
   });
@@ -42,11 +42,11 @@ class NumberTriviaApp extends StatelessWidget {
   }
 }
 
-/// {@template number_trivia_app}
+/// {@template _number_trivia_app}
 /// Root entry class for application UI.
 /// {@endtemplate}
 class _NumberTriviaApp extends StatelessWidget {
-  /// {@macro number_trivia_app}
+  /// {@macro _number_trivia_app}
   const _NumberTriviaApp();
 
   @override

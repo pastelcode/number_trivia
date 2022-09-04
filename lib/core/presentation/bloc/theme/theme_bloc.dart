@@ -42,6 +42,7 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeMode> {
     );
   }
 
+  /// Key to save last theme mode to local storage.
   final _storageKey = 'themeMode';
 
   @override
