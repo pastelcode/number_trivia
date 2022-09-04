@@ -1,6 +1,6 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 part 'theme_event.dart';
 
@@ -10,7 +10,7 @@ part 'theme_event.dart';
 /// whether theme mode is set to [ThemeMode.system], [ThemeMode.dark] or
 /// [ThemeMode.light].
 /// {@endtemplate}
-class ThemeBloc extends Bloc<ThemeEvent, ThemeMode> {
+class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeMode> {
   /// {@macro theme_bloc}
   ThemeBloc()
       : super(
@@ -40,5 +40,21 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeMode> {
     emit(
       ThemeMode.system,
     );
+  }
+
+  final _storageKey = 'themeMode';
+
+  @override
+  ThemeMode fromJson(Map<String, dynamic> json) {
+    final themeMode = json[_storageKey] as ThemeMode?;
+    return themeMode ?? ThemeMode.system;
+  }
+
+  @override
+  Map<String, dynamic> toJson(ThemeMode state) {
+    final json = {
+      _storageKey: state,
+    };
+    return json;
   }
 }
