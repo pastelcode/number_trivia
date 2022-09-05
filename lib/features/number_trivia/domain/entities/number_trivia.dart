@@ -11,13 +11,19 @@ class NumberTrivia extends Equatable {
     required this.type,
   });
 
+  /// {@template number_trivia__text}
   /// Fact about [number].
+  /// {@endtemplate}
   final String text;
 
+  /// {@template number_trivia__number}
   /// Number to get a fact about.
+  /// {@endtemplate}
   final int number;
 
+  /// {@template number_trivia__type}
   /// The fact type for [number].
+  /// {@endtemplate}
   final NumberTriviaType type;
 
   @override
