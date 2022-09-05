@@ -7,5 +7,6 @@ mixin NumberTriviaRepository {
   /// Gets a fact about [number].
   Future<Either<Failure, NumberTrivia>> getNumberTrivia({
     required int number,
+    required NumberTriviaType type,
   });
 }
