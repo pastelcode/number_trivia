@@ -21,7 +21,7 @@ void main() async {
 }
 
 /// {@template number_trivia_app}
-/// Root entry class for application that creates all core blocs.
+/// The root entry for the application that creates all blocs to manage states.
 /// {@endtemplate}
 class NumberTriviaApp extends StatelessWidget {
   /// {@macro number_trivia_app}
@@ -43,7 +43,7 @@ class NumberTriviaApp extends StatelessWidget {
 }
 
 /// {@template _number_trivia_app}
-/// Root entry class for application UI.
+/// The root entry for application UI.
 /// {@endtemplate}
 class _NumberTriviaApp extends StatelessWidget {
   /// {@macro _number_trivia_app}

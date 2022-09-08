@@ -1,7 +1,7 @@
 part of 'repositories.dart';
 
 /// {@template number_trivia_repository}
-/// Interface for number trivia repository.
+/// An interface for number trivia repository.
 /// {@endtemplate}
 mixin NumberTriviaRepository {
   /// Gets a fact about [number].

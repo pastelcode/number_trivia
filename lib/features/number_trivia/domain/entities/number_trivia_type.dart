@@ -4,15 +4,15 @@ part of 'entities.dart';
 /// Available types for facts in [NumberTrivia].
 /// {@endtemplate}
 enum NumberTriviaType {
-  /// Random fact type about [NumberTrivia.number].
+  /// Random fact type.
   trivia,
 
-  /// Math fact type about [NumberTrivia.number].
+  /// Math fact type.
   math,
 
-  /// Date fact type about [NumberTrivia.number].
+  /// Date fact type.
   date,
 
-  /// Year fact type about [NumberTrivia.number].
+  /// Year fact type.
   year,
 }

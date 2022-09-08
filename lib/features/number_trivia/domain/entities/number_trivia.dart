@@ -1,7 +1,7 @@
 part of 'entities.dart';
 
 /// {@template number_trivia}
-/// Entity for number trivia.
+/// An entity for number trivia.
 /// {@endtemplate}
 class NumberTrivia extends Equatable {
   /// {@macro number_trivia}
@@ -12,12 +12,12 @@ class NumberTrivia extends Equatable {
   });
 
   /// {@template number_trivia__text}
-  /// Fact about [number].
+  /// The fact about [number].
   /// {@endtemplate}
   final String text;
 
   /// {@template number_trivia__number}
-  /// Number to get a fact about.
+  /// The number to get a fact about it.
   /// {@endtemplate}
   final int number;
 

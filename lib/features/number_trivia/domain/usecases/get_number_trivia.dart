@@ -1,7 +1,7 @@
 part of 'usecases.dart';
 
 /// {@template get_number_trivia}
-/// Use case to get a [NumberTrivia] from its corresponding repository.
+/// Gets a [NumberTrivia].
 /// {@endtemplate}
 class GetNumberTrivia with Usecase<NumberTrivia, GetNumberTriviaParams> {
   /// {@macro get_number_trivia}
@@ -9,7 +9,7 @@ class GetNumberTrivia with Usecase<NumberTrivia, GetNumberTriviaParams> {
     required this.repository,
   });
 
-  /// Repository to fetch data from.
+  /// The repository to fetch data from.
   final NumberTriviaRepository repository;
 
   @override
@@ -24,7 +24,7 @@ class GetNumberTrivia with Usecase<NumberTrivia, GetNumberTriviaParams> {
 }
 
 /// {@template get_number_trivia_params}
-/// Data holder class for [GetNumberTrivia] use case parameters.
+/// A data holder class for [GetNumberTrivia] use case parameters.
 /// {@endtemplate}
 class GetNumberTriviaParams extends Equatable {
   /// {@macro get_number_trivia_params}

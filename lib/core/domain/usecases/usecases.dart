@@ -3,7 +3,9 @@ import 'package:equatable/equatable.dart';
 import 'package:number_trivia/core/errors/errors.dart';
 
 /// {@template usecase}
-/// Interface that contains common methods for use cases.
+/// An interface that contains common methods for use cases.
+///
+/// The implementing use case should return either a [Failure] or [Entity].
 /// {@endtemplate}
 mixin Usecase<Entity, Params> {
   /// This function makes possible to use the usecase class as a callable class.

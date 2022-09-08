@@ -5,7 +5,8 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 part 'theme_event.dart';
 
 /// {@template theme_bloc}
-/// Bloc to manage application theme mode state.
+/// A bloc to manage application theme mode.
+///
 /// It does not use any custom state, it uses [ThemeMode] enum to decide
 /// whether theme mode is set to [ThemeMode.system], [ThemeMode.dark] or
 /// [ThemeMode.light].
@@ -19,9 +20,6 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeMode> {
     on<ChangeThemeEvent>(
       _changeTheme,
     );
-    on<ResetThemeEvent>(
-      _resetTheme,
-    );
   }
 
   void _changeTheme(
@@ -33,26 +31,21 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeMode> {
     );
   }
 
-  void _resetTheme(
-    ResetThemeEvent event,
-    Emitter<ThemeMode> emit,
-  ) {
-    emit(
-      ThemeMode.system,
-    );
-  }
-
   /// Key to save last theme mode to local storage.
   final _storageKey = 'themeMode';
 
   @override
-  ThemeMode fromJson(Map<String, dynamic> json) {
+  ThemeMode fromJson(
+    Map<String, dynamic> json,
+  ) {
     final themeMode = json[_storageKey] as ThemeMode?;
     return themeMode ?? ThemeMode.system;
   }
 
   @override
-  Map<String, dynamic> toJson(ThemeMode state) {
+  Map<String, dynamic> toJson(
+    ThemeMode state,
+  ) {
     final json = {
       _storageKey: state,
     };
