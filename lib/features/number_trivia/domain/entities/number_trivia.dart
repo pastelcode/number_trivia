@@ -8,7 +8,6 @@ class NumberTrivia extends Equatable {
   const NumberTrivia({
     required this.text,
     required this.number,
-    required this.type,
   });
 
   /// {@template number_trivia__text}
@@ -21,15 +20,9 @@ class NumberTrivia extends Equatable {
   /// {@endtemplate}
   final int number;
 
-  /// {@template number_trivia__type}
-  /// The fact type for [number].
-  /// {@endtemplate}
-  final NumberTriviaType type;
-
   @override
   List<Object?> get props => [
         text,
         number,
-        type,
       ];
 }

@@ -26,7 +26,6 @@ void main() {
   const testNumberTrivia = NumberTrivia(
     text: 'test',
     number: 1,
-    type: NumberTriviaType.trivia,
   );
 
   test(
