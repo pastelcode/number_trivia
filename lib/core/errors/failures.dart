@@ -6,4 +6,37 @@ part of 'errors.dart';
 abstract class Failure extends Equatable {
   /// {@macro failure}
   const Failure();
+
+  @override
+  List<Object?> get props {
+    return [];
+  }
+}
+
+/// {@template server_failure}
+/// A server failure.
+/// {@endtemplate}
+class ServerFailure extends Failure {
+  /// {@macro server_failure}
+  const ServerFailure({
+    required this.statusCode,
+  });
+
+  /// The status code of the failed request.
+  final int statusCode;
+
+  @override
+  List<Object?> get props {
+    return [
+      statusCode,
+    ];
+  }
+}
+
+/// {@template cache_failure}
+/// A cache failure.
+/// {@endtemplate}
+class CacheFailure extends Failure {
+  /// {@macro cache_failure}
+  const CacheFailure();
 }
