@@ -46,7 +46,8 @@ void main() {
         },
       );
       test(
-        'should return a valid model when the JSON number is regarded as a double',
+        '''
+should return a valid model when the JSON number is regarded as a double''',
         () async {
           // arrange
           final jsonMap = fixture(
