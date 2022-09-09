@@ -7,7 +7,7 @@ import 'package:number_trivia/core/errors/errors.dart';
 ///
 /// The implementing use case should return either a [Failure] or [Entity].
 /// {@endtemplate}
-mixin Usecase<Entity, Params> {
+mixin UseCase<Entity, Params> {
   /// This function makes possible to use the usecase class as a callable class.
   /// Example:
   /// ```dart

@@ -1,9 +1,9 @@
-part of 'usecases.dart';
+part of 'use_cases.dart';
 
 /// {@template get_number_trivia}
 /// Gets a [NumberTrivia].
 /// {@endtemplate}
-class GetNumberTrivia with Usecase<NumberTrivia, GetNumberTriviaParams> {
+class GetNumberTrivia with UseCase<NumberTrivia, GetNumberTriviaParams> {
   /// {@macro get_number_trivia}
   const GetNumberTrivia({
     required this.repository,

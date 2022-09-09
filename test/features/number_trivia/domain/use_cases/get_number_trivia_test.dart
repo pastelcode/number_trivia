@@ -4,18 +4,18 @@ import 'package:mocktail/mocktail.dart';
 import 'package:number_trivia/core/errors/errors.dart';
 import 'package:number_trivia/features/number_trivia/domain/entities/entities.dart';
 import 'package:number_trivia/features/number_trivia/domain/repositories/repositories.dart';
-import 'package:number_trivia/features/number_trivia/domain/usecases/usecases.dart';
+import 'package:number_trivia/features/number_trivia/domain/use_cases/use_cases.dart';
 
 class MockNumberTriviaRepository extends Mock with NumberTriviaRepository {}
 
 void main() {
-  late final GetNumberTrivia usecase;
+  late final GetNumberTrivia useCase;
   late final MockNumberTriviaRepository mockRepository;
 
   setUp(
     () {
       mockRepository = MockNumberTriviaRepository();
-      usecase = GetNumberTrivia(
+      useCase = GetNumberTrivia(
         repository: mockRepository,
       );
     },
@@ -44,7 +44,7 @@ void main() {
       );
 
       // act
-      final result = await usecase(
+      final result = await useCase(
         params: const GetNumberTriviaParams(
           number: testNumber,
           type: testNumberTriviaType,

@@ -1,4 +1,4 @@
-part of 'datasources.dart';
+part of 'data_sources.dart';
 
 /// {@template number_trivia_local_data_source}
 /// An interface for number trivia local data source.

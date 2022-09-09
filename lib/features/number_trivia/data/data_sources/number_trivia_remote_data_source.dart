@@ -1,4 +1,4 @@
-part of 'datasources.dart';
+part of 'data_sources.dart';
 
 /// {@template number_trivia_remote_data_source}
 /// An interface for remote number trivia repository.
