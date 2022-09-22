@@ -5,6 +5,8 @@ part of 'data_sources.dart';
 /// {@endtemplate}
 mixin NumberTriviaRemoteDataSource {
   /// Gets a model of [NumberTrivia].
+  ///
+  /// Throws a [ServerException] for all error codes.
   Future<NumberTriviaModel> getNumberTrivia({
     required int number,
     required NumberTriviaType type,

@@ -5,6 +5,8 @@ part of 'data_sources.dart';
 /// {@endtemplate}
 mixin NumberTriviaLocalDataSource {
   /// Gets the last [NumberTriviaModel] that was saved to local cache.
+  ///
+  /// Throws [CacheException] if no cached data is present.
   Future<NumberTriviaModel> getLastNumberTrivia();
 
   /// Saves a [NumberTriviaModel] to local cache.

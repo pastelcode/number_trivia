@@ -24,12 +24,49 @@ class NumberTriviaRepositoryImpl extends Equatable with NumberTriviaRepository {
   Future<Either<Failure, NumberTrivia>> getNumberTrivia({
     required int number,
     required NumberTriviaType type,
-  }) {
-    // TODO(pastelcode): implement getNumberTrivia
-    throw UnimplementedError();
+  }) async {
+    if (!await networkInfo.isConnected) {
+      try {
+        final localNumberTrivia = await localDataSource.getLastNumberTrivia();
+
+        return Right(
+          localNumberTrivia.toEntity(),
+        );
+      } on CacheException {
+        return const Left(
+          CacheFailure(),
+        );
+      }
+    }
+
+    try {
+      final remoteNumberTrivia = await remoteDataSource.getNumberTrivia(
+        number: number,
+        type: type,
+      );
+
+      await localDataSource.cacheNumberTrivia(
+        triviaToCache: remoteNumberTrivia,
+      );
+
+      return Right(
+        remoteNumberTrivia.toEntity(),
+      );
+    } on ServerException catch (exception) {
+      return Left(
+        ServerFailure(
+          statusCode: exception.statusCode,
+        ),
+      );
+    }
   }
 
   @override
-  // TODO(pastelcode): implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props {
+    return [
+      remoteDataSource,
+      localDataSource,
+      networkInfo,
+    ];
+  }
 }
