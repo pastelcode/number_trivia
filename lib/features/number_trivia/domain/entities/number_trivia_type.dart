@@ -1,4 +1,4 @@
-part of 'entities.dart';
+part of 'number_trivia.dart';
 
 /// {@template number_trivia_type}
 /// Available types for facts in [NumberTrivia].

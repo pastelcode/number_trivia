@@ -1,5 +1,3 @@
-part of 'platform.dart';
-
 /// {@template network_info}
 /// A class to get device network information.
 /// {@endtemplate}

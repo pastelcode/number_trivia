@@ -1,4 +1,6 @@
-part of 'entities.dart';
+import 'package:equatable/equatable.dart';
+
+part 'number_trivia_type.dart';
 
 /// {@template number_trivia}
 /// An entity for number trivia.

@@ -10,6 +10,9 @@ part 'theme_event.dart';
 /// It does not use any custom state, it uses [ThemeMode] enum to decide
 /// whether theme mode is set to [ThemeMode.system], [ThemeMode.dark] or
 /// [ThemeMode.light].
+///
+/// Events:
+/// - [ChangeTheme]
 /// {@endtemplate}
 class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeMode> {
   /// {@macro theme_bloc}
@@ -17,13 +20,13 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeMode> {
       : super(
           ThemeMode.system,
         ) {
-    on<ChangeThemeEvent>(
+    on<ChangeTheme>(
       _changeTheme,
     );
   }
 
   void _changeTheme(
-    ChangeThemeEvent event,
+    ChangeTheme event,
     Emitter<ThemeMode> emit,
   ) {
     emit(
@@ -32,7 +35,7 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeMode> {
   }
 
   /// Key to save last theme mode to local storage.
-  final _storageKey = 'themeMode';
+  final _storageKey = 'theme-mode';
 
   @override
   ThemeMode fromJson(

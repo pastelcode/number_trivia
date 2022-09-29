@@ -1,4 +1,4 @@
-part of 'errors.dart';
+import 'package:equatable/equatable.dart';
 
 /// {@template custom_exception}
 /// A base class for custom exceptions.
@@ -18,11 +18,9 @@ abstract class _CustomException extends Equatable implements Exception {
   }
 
   @override
-  List<Object?> get props {
-    return [
-      message,
-    ];
-  }
+  List<Object?> get props => [
+        message,
+      ];
 }
 
 /// {@template server_exception}
@@ -44,12 +42,10 @@ class ServerException extends _CustomException {
   }
 
   @override
-  List<Object?> get props {
-    return [
-      message,
-      statusCode,
-    ];
-  }
+  List<Object?> get props => [
+        message,
+        statusCode,
+      ];
 }
 
 /// {@template cache_exception}

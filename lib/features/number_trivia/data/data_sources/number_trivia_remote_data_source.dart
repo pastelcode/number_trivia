@@ -1,4 +1,5 @@
-part of 'data_sources.dart';
+import 'package:number_trivia/features/number_trivia/data/models/models.dart';
+import 'package:number_trivia/features/number_trivia/domain/entities/entities.dart';
 
 /// {@template number_trivia_remote_data_source}
 /// An interface for remote number trivia repository.

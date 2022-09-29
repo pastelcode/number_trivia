@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:number_trivia/core/errors/errors.dart';
-import 'package:number_trivia/core/platform/platform.dart';
+import 'package:number_trivia/core/network/network.dart';
 import 'package:number_trivia/features/number_trivia/data/data_sources/data_sources.dart';
 import 'package:number_trivia/features/number_trivia/data/models/models.dart';
 import 'package:number_trivia/features/number_trivia/data/repositories/repositories.dart';

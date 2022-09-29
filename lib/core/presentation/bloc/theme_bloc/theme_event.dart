@@ -11,12 +11,12 @@ abstract class ThemeEvent extends Equatable {
   List<Object> get props => [];
 }
 
-/// {@template change_theme_event}
-/// An event to change the theme mode to [themeMode].
+/// {@template change_theme}
+/// An event to change the theme mode to [themeMode] value.
 /// {@endtemplate}
-class ChangeThemeEvent extends ThemeEvent {
+class ChangeTheme extends ThemeEvent {
   /// {@macro change_theme_event}
-  const ChangeThemeEvent({
+  const ChangeTheme({
     required this.themeMode,
   });
 

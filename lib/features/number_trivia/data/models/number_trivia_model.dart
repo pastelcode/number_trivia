@@ -1,4 +1,8 @@
-part of 'models.dart';
+import 'dart:convert';
+
+import 'package:equatable/equatable.dart';
+import 'package:number_trivia/core/data/models/models.dart';
+import 'package:number_trivia/features/number_trivia/domain/entities/entities.dart';
 
 /// {@template number_trivia_model}
 /// A model for [NumberTrivia].

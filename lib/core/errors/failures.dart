@@ -1,4 +1,4 @@
-part of 'errors.dart';
+import 'package:equatable/equatable.dart';
 
 /// {@template failure}
 /// Interface to represent a failure when fetching data from repositories.
@@ -8,9 +8,7 @@ abstract class Failure extends Equatable {
   const Failure();
 
   @override
-  List<Object?> get props {
-    return [];
-  }
+  List<Object?> get props => [];
 }
 
 /// {@template server_failure}
@@ -26,11 +24,9 @@ class ServerFailure extends Failure {
   final int statusCode;
 
   @override
-  List<Object?> get props {
-    return [
-      statusCode,
-    ];
-  }
+  List<Object?> get props => [
+        statusCode,
+      ];
 }
 
 /// {@template cache_failure}

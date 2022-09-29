@@ -1,4 +1,4 @@
-part of 'data_sources.dart';
+import 'package:number_trivia/features/number_trivia/data/models/models.dart';
 
 /// {@template number_trivia_local_data_source}
 /// An interface for number trivia local data source.
