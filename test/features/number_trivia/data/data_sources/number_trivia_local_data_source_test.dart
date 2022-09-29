@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:number_trivia/core/errors/errors.dart';
 import 'package:number_trivia/features/number_trivia/data/data_sources/data_sources.dart';
 import 'package:number_trivia/features/number_trivia/data/models/models.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -30,6 +31,8 @@ void main() {
         ),
       );
 
+      const sharedPreferencesKey = 'CACHED_NUMBER_TRIVIA';
+
       test(
         'should return NumberTriviaModel from SharedPreferences when there is one in the cache',
         () async {
@@ -54,7 +57,7 @@ void main() {
           verify(
             () {
               return sharedPreferences.getString(
-                'CACHED_NUMBER_TRIVIA',
+                sharedPreferencesKey,
               );
             },
           );
@@ -62,6 +65,33 @@ void main() {
             result,
             equals(
               numberTriviaModel,
+            ),
+          );
+        },
+      );
+
+      test(
+        'should throw CacheException when there is not a previously cached number trivia model',
+        () async {
+          // arrange
+          when(
+            () {
+              return sharedPreferences.getString(
+                any(),
+              );
+            },
+          ).thenReturn(
+            null,
+          );
+
+          // act
+          final call = numberTriviaLocalDataSource.getLastNumberTrivia;
+
+          // assert
+          expect(
+            call,
+            throwsA(
+              isA<CacheException>(),
             ),
           );
         },
