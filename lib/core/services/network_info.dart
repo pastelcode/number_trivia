@@ -1,3 +1,5 @@
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+
 /// {@template network_info}
 /// A class to get device network information.
 /// {@endtemplate}
@@ -11,9 +13,13 @@ mixin NetworkInfo {
 /// {@endtemplate}
 class NetworkInfoImpl with NetworkInfo {
   /// {@macro network_info_impl}
-  const NetworkInfoImpl();
+  const NetworkInfoImpl({
+    required this.connectionChecker,
+  });
+
+  /// The connection checker service.
+  final InternetConnectionChecker connectionChecker;
 
   @override
-  // TODO: implement isConnected
-  Future<bool> get isConnected => throw UnimplementedError();
+  Future<bool> get isConnected => connectionChecker.hasConnection;
 }
