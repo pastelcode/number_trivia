@@ -31,8 +31,6 @@ void main() {
         ),
       );
 
-      const sharedPreferencesKey = 'CACHED_NUMBER_TRIVIA';
-
       test(
         'should return NumberTriviaModel from SharedPreferences when there is one in the cache',
         () async {
@@ -57,7 +55,7 @@ void main() {
           verify(
             () {
               return sharedPreferences.getString(
-                sharedPreferencesKey,
+                NumberTriviaLocalDataSourceImpl.sharedPreferencesKey,
               );
             },
           );
@@ -93,6 +91,53 @@ void main() {
             throwsA(
               isA<CacheException>(),
             ),
+          );
+        },
+      );
+    },
+  );
+
+  group(
+    'cacheNumberTrivia',
+    () {
+      final numberTriviaModel = NumberTriviaModel(
+        number: 1,
+        text: 'Test',
+      );
+
+      test(
+        'should call SharedPreferences to cache the data',
+        () async {
+          // arrange
+          when(
+            () {
+              return sharedPreferences.setString(
+                any(),
+                any(),
+              );
+            },
+          ).thenAnswer(
+            (
+              _,
+            ) async {
+              return true;
+            },
+          );
+
+          // act
+          await numberTriviaLocalDataSource.cacheNumberTrivia(
+            triviaToCache: numberTriviaModel,
+          );
+
+          // assert
+          final expectedJsonString = numberTriviaModel.toJson();
+          verify(
+            () {
+              return sharedPreferences.setString(
+                NumberTriviaLocalDataSourceImpl.sharedPreferencesKey,
+                expectedJsonString,
+              );
+            },
           );
         },
       );

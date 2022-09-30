@@ -29,12 +29,13 @@ class NumberTriviaLocalDataSourceImpl with NumberTriviaLocalDataSource {
   /// The shared preferences service to cache a number trivia data.
   final SharedPreferences sharedPreferences;
 
-  String get _sharedPreferencesKey => 'CACHED_NUMBER_TRIVIA';
+  /// The shared preferences key to set and get the data.
+  static String get sharedPreferencesKey => 'CACHED_NUMBER_TRIVIA';
 
   @override
   Future<NumberTriviaModel> getLastNumberTrivia() async {
     final cachedJson = sharedPreferences.getString(
-      _sharedPreferencesKey,
+      sharedPreferencesKey,
     );
 
     if (cachedJson == null) {
@@ -52,8 +53,10 @@ class NumberTriviaLocalDataSourceImpl with NumberTriviaLocalDataSource {
   @override
   Future<void> cacheNumberTrivia({
     required NumberTriviaModel triviaToCache,
-  }) {
-    // TODO(pastelcode): implement cacheNumberTrivia
-    throw UnimplementedError();
+  }) async {
+    await sharedPreferences.setString(
+      sharedPreferencesKey,
+      triviaToCache.toJson(),
+    );
   }
 }
