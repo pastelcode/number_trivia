@@ -9,7 +9,7 @@ import 'package:number_trivia/features/number_trivia/domain/entities/entities.da
 /// {@endtemplate}
 class NumberTriviaModel extends Equatable with ModelOf<NumberTrivia> {
   /// {@macro number_trivia_model}
-  NumberTriviaModel({
+  const NumberTriviaModel({
     required this.text,
     required this.number,
   });
