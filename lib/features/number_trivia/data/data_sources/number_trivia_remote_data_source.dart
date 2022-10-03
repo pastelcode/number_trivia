@@ -33,7 +33,6 @@ class NumberTriviaRemoteDataSourceImpl with NumberTriviaRemoteDataSource {
     required int number,
     required NumberTriviaType type,
   }) async {
-    // TODO: implement getNumberTrivia
     final response = await httpClient.get(
       Uri.https(
         'numbersapi.p.rapidapi.com',
