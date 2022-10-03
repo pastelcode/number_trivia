@@ -36,3 +36,11 @@ class CacheFailure extends Failure {
   /// {@macro cache_failure}
   const CacheFailure();
 }
+
+/// {@template invalid_input_failure}
+/// A failure to indicate a input string conversion went wrong.
+/// {@endtemplate}
+class InvalidInputFailure extends Failure {
+  /// {@macro invalid_input_failure}
+  const InvalidInputFailure();
+}
