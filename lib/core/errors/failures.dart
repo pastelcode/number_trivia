@@ -42,5 +42,15 @@ class CacheFailure extends Failure {
 /// {@endtemplate}
 class InvalidInputFailure extends Failure {
   /// {@macro invalid_input_failure}
-  const InvalidInputFailure();
+  const InvalidInputFailure({
+    required this.message,
+  });
+
+  /// The message for this failure.
+  final String message;
+
+  @override
+  List<Object?> get props => [
+        message,
+      ];
 }

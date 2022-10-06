@@ -3,6 +3,11 @@ import 'package:number_trivia/core/errors/errors.dart';
 
 /// An input converter.
 class InputConverter {
+  /// The error message for the failure that is returned from
+  /// [stringToUnsignedInteger].
+  static const stringToUnsignedIntegerError =
+      'The number must be a positive integer or zero';
+
   /// Converts [stringNumber] representing an unsigned integer to its own
   /// integer type.
   ///
@@ -16,7 +21,9 @@ class InputConverter {
     );
     if (result == null || result < 0) {
       return const Left(
-        InvalidInputFailure(),
+        InvalidInputFailure(
+          message: stringToUnsignedIntegerError,
+        ),
       );
     }
     return Right(

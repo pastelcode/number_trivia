@@ -53,7 +53,9 @@ void main() {
           expect(
             result,
             const Left<Failure, int>(
-              InvalidInputFailure(),
+              InvalidInputFailure(
+                message: InputConverter.stringToUnsignedIntegerError,
+              ),
             ),
           );
         },
@@ -74,7 +76,9 @@ void main() {
           expect(
             result,
             const Left<Failure, int>(
-              InvalidInputFailure(),
+              InvalidInputFailure(
+                message: InputConverter.stringToUnsignedIntegerError,
+              ),
             ),
           );
         },
