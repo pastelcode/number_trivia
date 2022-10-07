@@ -17,12 +17,11 @@ class _UiRoot extends StatelessWidget {
         ThemeMode state,
       ) {
         return MaterialApp(
+          theme: ApplicationTheme.lightTheme,
+          darkTheme: ApplicationTheme.darkTheme,
           title: 'Number trivia',
           themeMode: state,
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
-          home: const SizedBox(),
+          home: const NumberTriviaPage(),
         );
       },
     );
