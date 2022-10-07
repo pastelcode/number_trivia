@@ -5,7 +5,11 @@ part of 'main.dart';
 /// {@endtemplate}
 class _BlocsProvider extends StatelessWidget {
   /// {@macro blocs_provider}
-  const _BlocsProvider();
+  const _BlocsProvider({
+    required this.child,
+  });
+
+  final Widget child;
 
   @override
   Widget build(
@@ -15,13 +19,23 @@ class _BlocsProvider extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (
-            BuildContext context,
+            _,
           ) {
             return ThemeBloc();
           },
         ),
+        BlocProvider(
+          create: (
+            _,
+          ) {
+            return NumberTriviaBloc(
+              getNumberTrivia: getIt(),
+              inputConverter: getIt(),
+            );
+          },
+        ),
       ],
-      child: const _UiRoot(),
+      child: child,
     );
   }
 }

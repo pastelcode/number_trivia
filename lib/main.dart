@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:number_trivia/core/presentation/bloc/bloc.dart';
+import 'package:number_trivia/features/number_trivia/presentation/bloc/bloc.dart';
+import 'package:number_trivia/injection_container.dart';
 import 'package:path_provider/path_provider.dart';
 
 part 'blocs_provider.dart';
@@ -10,6 +12,8 @@ part 'ui_root.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await initInjectionContainer();
 
   // <- Set up Hydrated Bloc
   final storage = await HydratedStorage.build(
@@ -22,7 +26,9 @@ void main() async {
   HydratedBlocOverrides.runZoned(
     () {
       runApp(
-        const _BlocsProvider(),
+        const _BlocsProvider(
+          child: _UiRoot(),
+        ),
       );
     },
     storage: storage,
