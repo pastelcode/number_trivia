@@ -4,10 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 /// An interface for application themes.
 mixin ApplicationTheme {
   /// The primary color of the application.
-  static Color get primaryColor => Colors.green;
-
-  /// Whether application should use Material3 design system.
-  static bool get useMaterial3 => true;
+  static Color get primaryColor => Colors.orange;
 
   static AppBarTheme get _appBarTheme => const AppBarTheme(
         centerTitle: true,
@@ -18,29 +15,47 @@ mixin ApplicationTheme {
       );
 
   static ColorScheme get _darkColorScheme => ColorScheme.fromSeed(
-        seedColor: primaryColor,
         brightness: Brightness.dark,
+        seedColor: primaryColor,
       );
 
-  static ThemeData get _baseTheme => ThemeData(
-        useMaterial3: useMaterial3,
-        appBarTheme: _appBarTheme,
-      );
-
-  /// The text theme for application
-  static TextTheme get textTheme => GoogleFonts.sourceSansProTextTheme(
-        _baseTheme.textTheme,
-      );
+  static ThemeData _getThemeBasedOnColorScheme({
+    required ColorScheme colorScheme,
+  }) {
+    return ThemeData(
+      colorScheme: colorScheme,
+      useMaterial3: true,
+      appBarTheme: _appBarTheme,
+      iconTheme: const IconThemeData().copyWith(
+        color: colorScheme.onSurface,
+      ),
+      bottomSheetTheme: BottomSheetThemeData(
+        modalBackgroundColor: colorScheme.surface,
+      ),
+    );
+  }
 
   /// The light [ThemeData] to pass to a [MaterialApp].
-  static ThemeData get lightTheme => _baseTheme.copyWith(
-        colorScheme: _lightColorScheme,
-        textTheme: textTheme,
-      );
+  static ThemeData get lightTheme {
+    final theme = _getThemeBasedOnColorScheme(
+      colorScheme: _lightColorScheme,
+    );
+    return theme.copyWith(
+      textTheme: GoogleFonts.sourceSansProTextTheme(
+        theme.textTheme,
+      ),
+    );
+  }
 
   /// The dark [ThemeData] to pass to a [MaterialApp].
-  static ThemeData get darkTheme => _baseTheme.copyWith(
-        colorScheme: _darkColorScheme,
-        textTheme: textTheme,
-      );
+  static ThemeData get darkTheme {
+    final theme = _getThemeBasedOnColorScheme(
+      colorScheme: _darkColorScheme,
+    );
+    return theme.copyWith(
+      textTheme: GoogleFonts.sourceSansProTextTheme(
+        theme.textTheme,
+      ),
+    );
+  }
 }
