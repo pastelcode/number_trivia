@@ -37,6 +37,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.1
+  flutter_remix: ^0.0.3
   get_it: ^7.2.0
   google_fonts: ^3.0.1
   http: ^0.13.5

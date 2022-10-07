@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:number_trivia/core/widgets/widgets.dart';
 
 /// {@template number_trivia_page}
 /// A page for the user to get a trivia about a number.
@@ -13,9 +14,9 @@ class NumberTriviaPage extends StatelessWidget {
   Widget build(
     BuildContext context,
   ) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Number Trivia'),
+    return const Scaffold(
+      appBar: CustomAppBar(
+        title: Text('Number Trivia'),
       ),
     );
   }
