@@ -21,7 +21,6 @@ void main() async {
       final license = await rootBundle.loadString(
         'assets/fonts/source_sans_pro/OFL.txt',
       );
-      print(license);
       yield LicenseEntryWithLineBreaks(
         [
           'Source Sans Pro',
