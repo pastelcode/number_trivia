@@ -24,6 +24,9 @@ Future<void> _showAppearanceOption({
   await showCustomModalBottomSheet<void>(
     context: context,
     title: const Text('Appearance'),
+    padding: const EdgeInsets.symmetric(
+      horizontal: 20,
+    ),
     children: <Widget>[
       BlocBuilder<ThemeBloc, ThemeMode>(
         builder: (
@@ -33,6 +36,7 @@ Future<void> _showAppearanceOption({
           return GridView.count(
             shrinkWrap: true,
             crossAxisCount: 3,
+            crossAxisSpacing: 5,
             children: <Widget>[
               _AppearanceOption(
                 themeMode: ThemeMode.light,
@@ -51,12 +55,12 @@ Future<void> _showAppearanceOption({
                 ),
               ),
               _AppearanceOption(
-                themeMode: ThemeMode.system,
                 currentThemeMode: state,
-                name: 'System',
                 icon: const Icon(
                   FlutterRemix.computer_line,
                 ),
+                name: 'System',
+                themeMode: ThemeMode.system,
               ),
             ],
           );
@@ -89,30 +93,32 @@ class _AppearanceOption extends StatelessWidget {
     );
     final isSelected = currentThemeMode == themeMode;
 
-    return GestureDetector(
-      onTap: () {
+    return OutlinedButton(
+      onPressed: () {
         context.read<ThemeBloc>().add(
               ChangeTheme(
                 themeMode: themeMode,
               ),
             );
       },
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          border: Border.all(
-            width: 2,
-            color: isSelected ? theme.primaryColor : Colors.transparent,
+      style: OutlinedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(
+            15,
           ),
         ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              icon,
-              Text(name),
-            ],
-          ),
+        foregroundColor: theme.colorScheme.onSurface,
+        side: BorderSide(
+          width: 5,
+          color: isSelected ? theme.colorScheme.primary : Colors.transparent,
         ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          icon,
+          Text(name),
+        ],
       ),
     );
   }
