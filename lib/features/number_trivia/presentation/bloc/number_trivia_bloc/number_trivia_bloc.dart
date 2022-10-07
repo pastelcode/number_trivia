@@ -43,7 +43,7 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
     GetTrivia event,
     Emitter<NumberTriviaState> emit,
   ) async {
-    final inputConverterResult = inputConverter
+    await inputConverter
         .stringToUnsignedInteger(
       stringNumber: event.numberString,
     )
@@ -59,7 +59,37 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
       },
       (
         int number,
-      ) {},
+      ) async {
+        emit(
+          const Loading(),
+        );
+        final failureOrTrivia = await getNumberTrivia(
+          params: GetNumberTriviaParams(
+            number: number,
+            type: event.type,
+          ),
+        );
+        failureOrTrivia.fold(
+          (
+            Failure failure,
+          ) {
+            emit(
+              Failed(
+                failure: failure,
+              ),
+            );
+          },
+          (
+            NumberTrivia numberTrivia,
+          ) {
+            emit(
+              Loaded(
+                trivia: numberTrivia,
+              ),
+            );
+          },
+        );
+      },
     );
   }
 }

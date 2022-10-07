@@ -24,6 +24,13 @@ void main() {
         getNumberTrivia: getNumberTrivia,
         inputConverter: inputConverter,
       );
+
+      registerFallbackValue(
+        const GetNumberTriviaParams(
+          number: 1,
+          type: NumberTriviaType.trivia,
+        ),
+      );
     },
   );
 
@@ -51,23 +58,47 @@ void main() {
         number: number,
       );
 
+      void setUpMockInputConverterSuccess() {
+        when(
+          () {
+            return inputConverter.stringToUnsignedInteger(
+              stringNumber: any(
+                named: 'stringNumber',
+              ),
+            );
+          },
+        ).thenReturn(
+          const Right(
+            number,
+          ),
+        );
+      }
+
+      void setUpMockGetNumberTriviaSuccess() {
+        when(
+          () {
+            return getNumberTrivia(
+              params: any(
+                named: 'params',
+              ),
+            );
+          },
+        ).thenAnswer(
+          (
+            _,
+          ) async {
+            return const Right(
+              numberTrivia,
+            );
+          },
+        );
+      }
+
       test(
         'should call the input converter to validate and convert the string to an unsigned integer',
         () async {
           // arrange
-          when(
-            () {
-              return inputConverter.stringToUnsignedInteger(
-                stringNumber: any(
-                  named: 'stringNumber',
-                ),
-              );
-            },
-          ).thenReturn(
-            const Right(
-              number,
-            ),
-          );
+          setUpMockInputConverterSuccess();
 
           // act
           numberTriviaBloc.add(
@@ -129,6 +160,174 @@ void main() {
               failure: InvalidInputFailure(
                 message: InputConverter.stringToUnsignedIntegerError,
               ),
+            ),
+          ];
+          await expectLater(
+            numberTriviaBloc.stream.asBroadcastStream(),
+            emitsInOrder(
+              expected,
+            ),
+          );
+        },
+      );
+
+      test(
+        'should get data from use case',
+        () async {
+          // arrange
+          setUpMockInputConverterSuccess();
+          setUpMockGetNumberTriviaSuccess();
+
+          // act
+          numberTriviaBloc.add(
+            const GetTrivia(
+              numberString: numberString,
+              type: triviaType,
+            ),
+          );
+          await untilCalled(
+            () {
+              getNumberTrivia(
+                params: const GetNumberTriviaParams(
+                  number: number,
+                  type: triviaType,
+                ),
+              );
+            },
+          );
+
+          // assert
+          verify(
+            () {
+              return getNumberTrivia(
+                params: const GetNumberTriviaParams(
+                  number: number,
+                  type: triviaType,
+                ),
+              );
+            },
+          );
+        },
+      );
+
+      test(
+        'should emit [Loading] and [Loaded] when data is gotten successfully',
+        () async {
+          // arrange
+          setUpMockInputConverterSuccess();
+          setUpMockGetNumberTriviaSuccess();
+
+          // act
+          numberTriviaBloc.add(
+            const GetTrivia(
+              numberString: numberString,
+              type: triviaType,
+            ),
+          );
+
+          // assert
+          final expected = [
+            const Loading(),
+            const Loaded(
+              trivia: numberTrivia,
+            ),
+          ];
+          await expectLater(
+            numberTriviaBloc.stream.asBroadcastStream(),
+            emitsInOrder(
+              expected,
+            ),
+          );
+        },
+      );
+
+      test(
+        'should emit [Loading] and [Failed] when getting data fails',
+        () async {
+          // arrange
+          setUpMockInputConverterSuccess();
+          when(
+            () {
+              return getNumberTrivia(
+                params: any(
+                  named: 'params',
+                ),
+              );
+            },
+          ).thenAnswer(
+            (
+              _,
+            ) async {
+              return const Left(
+                ServerFailure(
+                  statusCode: 400,
+                ),
+              );
+            },
+          );
+
+          // act
+          numberTriviaBloc.add(
+            const GetTrivia(
+              numberString: numberString,
+              type: triviaType,
+            ),
+          );
+
+          // assert
+          final expected = [
+            const Loading(),
+            const Failed(
+              failure: ServerFailure(
+                statusCode: 400,
+              ),
+            ),
+          ];
+          await expectLater(
+            numberTriviaBloc.stream.asBroadcastStream(),
+            emitsInOrder(
+              expected,
+            ),
+          );
+        },
+      );
+
+      test(
+        'should emit [Loading] and [Failed] when caching data fails',
+        () async {
+          // arrange
+          setUpMockInputConverterSuccess();
+          when(
+            () {
+              return getNumberTrivia(
+                params: any(
+                  named: 'params',
+                ),
+              );
+            },
+          ).thenAnswer(
+            (
+              _,
+            ) async {
+              return const Left(
+                CacheFailure(),
+              );
+            },
+          );
+
+          // act
+          numberTriviaBloc.add(
+            const GetTrivia(
+              numberString: numberString,
+              type: triviaType,
+            ),
+          );
+
+          // assert
+          final expected = [
+            const Loading(),
+            const Failed(
+              failure: CacheFailure(),
             ),
           ];
           await expectLater(
