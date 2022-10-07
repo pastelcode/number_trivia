@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_remix/flutter_remix.dart';
+import 'package:number_trivia/core/presentation/bloc/bloc.dart';
+import 'package:number_trivia/core/widgets/widgets.dart';
 
-part 'application_menu.dart';
+part 'appearance_option.dart';
+part 'application_menu_button.dart';
 
 /// {@template custom_app_bar}
 /// A custom application bar with essential actions.
@@ -26,21 +30,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(
     BuildContext context,
   ) {
+    final ModalRoute<dynamic>? parentRoute = ModalRoute.of(
+      context,
+    );
+
     return AppBar(
-      leading: Navigator.canPop(
-        context,
-      )
-          ? IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                FlutterRemix.arrow_left_s_line,
-              ),
-            )
+      leading: (parentRoute != null && parentRoute.canPop)
+          ? const CustomBackButton()
           : null,
       title: title,
       actions: <Widget>[
         ...?actions,
-        const ApplicationMenu(),
+        const ApplicationMenuButton(),
       ],
     );
   }

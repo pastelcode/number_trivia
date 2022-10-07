@@ -41,8 +41,14 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeMode> {
   ThemeMode fromJson(
     Map<String, dynamic> json,
   ) {
-    final themeMode = json[_storageKey] as ThemeMode?;
-    return themeMode ?? ThemeMode.system;
+    final themeMode = json[_storageKey] as String?;
+    if (themeMode == 'light') {
+      return ThemeMode.light;
+    }
+    if (themeMode == 'dark') {
+      return ThemeMode.dark;
+    }
+    return ThemeMode.system;
   }
 
   @override
@@ -50,7 +56,7 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeMode> {
     ThemeMode state,
   ) {
     final json = {
-      _storageKey: state,
+      _storageKey: state.name,
     };
     return json;
   }
