@@ -21,9 +21,25 @@ class _UiRoot extends StatelessWidget {
           darkTheme: ApplicationTheme.darkTheme,
           title: 'Number trivia',
           themeMode: state,
-          home: const NumberTriviaPage(),
+          home: const ScrollConfiguration(
+            behavior: _ScrollBehaviorModified(),
+            child: NumberTriviaPage(),
+          ),
         );
       },
+    );
+  }
+}
+
+class _ScrollBehaviorModified extends ScrollBehavior {
+  const _ScrollBehaviorModified();
+
+  @override
+  ScrollPhysics getScrollPhysics(
+    _,
+  ) {
+    return const BouncingScrollPhysics(
+      parent: AlwaysScrollableScrollPhysics(),
     );
   }
 }
