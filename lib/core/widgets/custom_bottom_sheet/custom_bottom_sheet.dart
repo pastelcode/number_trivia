@@ -6,6 +6,7 @@ Future<T?> showCustomModalBottomSheet<T>({
   required BuildContext context,
   Widget? title,
   List<Widget>? children,
+  EdgeInsets padding = EdgeInsets.zero,
 }) async {
   return showModalBottomSheet<T>(
     context: context,
@@ -15,6 +16,7 @@ Future<T?> showCustomModalBottomSheet<T>({
     ) {
       return _CustomBottomSheet(
         title: title,
+        padding: padding,
         children: children,
       );
     },
@@ -25,10 +27,12 @@ class _CustomBottomSheet extends StatelessWidget {
   const _CustomBottomSheet({
     this.title,
     this.children,
+    required this.padding,
   });
 
   final Widget? title;
   final List<Widget>? children;
+  final EdgeInsets padding;
 
   @override
   Widget build(
@@ -51,11 +55,14 @@ class _CustomBottomSheet extends StatelessWidget {
               title: title,
               leading: const CustomBackButton(),
             ),
-            SliverList(
-              delegate: SliverChildListDelegate(
-                <Widget>[
-                  ...?children,
-                ],
+            SliverPadding(
+              padding: padding,
+              sliver: SliverList(
+                delegate: SliverChildListDelegate(
+                  <Widget>[
+                    ...?children,
+                  ],
+                ),
               ),
             ),
           ],
