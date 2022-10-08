@@ -18,10 +18,7 @@ mixin ApplicationTheme {
       const InputDecorationTheme(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(
-            Radius.circular(15),
-          ),
-          borderSide: BorderSide(
-            width: 10,
+            Radius.circular(10),
           ),
         ),
       );
