@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:number_trivia/core/theme/theme.dart';
 import 'package:number_trivia/core/widgets/widgets.dart';
 
 /// Shows a custom modal bottom sheet.
@@ -50,9 +51,17 @@ class _CustomBottomSheet extends StatelessWidget {
           controller: scrollController,
           slivers: <Widget>[
             SliverAppBar(
+              toolbarHeight: ApplicationTheme.appBarHeight,
               pinned: true,
               centerTitle: false,
-              title: title,
+              title: title != null
+                  ? DefaultTextStyle.merge(
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                      child: title!,
+                    )
+                  : null,
               leading: const CustomBackButton(),
             ),
             SliverPadding(

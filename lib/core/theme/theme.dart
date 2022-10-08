@@ -4,10 +4,14 @@ import 'package:google_fonts/google_fonts.dart';
 /// An interface for application themes.
 mixin ApplicationTheme {
   /// The primary color of the application.
-  static Color get primaryColor => Colors.orange;
+  static Color get primaryColor => Colors.cyan;
 
-  static AppBarTheme get _appBarTheme => const AppBarTheme(
+  /// The height for global app bars.
+  static double get appBarHeight => 75;
+
+  static AppBarTheme get _appBarTheme => AppBarTheme(
         centerTitle: true,
+        toolbarHeight: appBarHeight,
       );
 
   static ColorScheme get _lightColorScheme => ColorScheme.fromSeed(
@@ -26,6 +30,7 @@ mixin ApplicationTheme {
       colorScheme: colorScheme,
       useMaterial3: true,
       appBarTheme: _appBarTheme,
+      scaffoldBackgroundColor: colorScheme.surface,
       bottomSheetTheme: BottomSheetThemeData(
         modalBackgroundColor: colorScheme.surface,
       ),
@@ -38,7 +43,7 @@ mixin ApplicationTheme {
       colorScheme: _lightColorScheme,
     );
     return theme.copyWith(
-      textTheme: GoogleFonts.sourceSansProTextTheme(
+      textTheme: GoogleFonts.interTextTheme(
         theme.textTheme,
       ),
     );
@@ -50,7 +55,7 @@ mixin ApplicationTheme {
       colorScheme: _darkColorScheme,
     );
     return theme.copyWith(
-      textTheme: GoogleFonts.sourceSansProTextTheme(
+      textTheme: GoogleFonts.interTextTheme(
         theme.textTheme,
       ),
     );

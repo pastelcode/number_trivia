@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_remix/flutter_remix.dart';
 import 'package:number_trivia/core/presentation/bloc/bloc.dart';
+import 'package:number_trivia/core/theme/theme.dart';
 import 'package:number_trivia/core/widgets/widgets.dart';
 
 part 'appearance_option.dart';
@@ -38,7 +39,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: (parentRoute != null && parentRoute.canPop)
           ? const CustomBackButton()
           : null,
-      title: title,
+      title: DefaultTextStyle.merge(
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+        child: title,
+      ),
       actions: <Widget>[
         ...?actions,
         const ApplicationMenuButton(),
@@ -47,7 +53,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(
-        kToolbarHeight,
+  Size get preferredSize => Size.fromHeight(
+        ApplicationTheme.appBarHeight,
       );
 }

@@ -19,11 +19,11 @@ void main() async {
   LicenseRegistry.addLicense(
     () async* {
       final license = await rootBundle.loadString(
-        'assets/fonts/source_sans_pro/OFL.txt',
+        'assets/fonts/Inter/OFL.txt',
       );
       yield LicenseEntryWithLineBreaks(
         [
-          'Source Sans Pro',
+          'Inter',
         ],
         license,
       );

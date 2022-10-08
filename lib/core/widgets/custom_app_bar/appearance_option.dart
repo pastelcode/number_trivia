@@ -45,6 +45,7 @@ Future<void> _showAppearanceOption({
                 name: 'Light',
                 icon: const Icon(
                   FlutterRemix.sun_line,
+                  size: 30,
                 ),
               ),
               _AppearanceOption(
@@ -53,12 +54,14 @@ Future<void> _showAppearanceOption({
                 name: 'Dark',
                 icon: const Icon(
                   FlutterRemix.moon_line,
+                  size: 30,
                 ),
               ),
               _AppearanceOption(
                 currentThemeMode: state,
                 icon: const Icon(
                   FlutterRemix.computer_line,
+                  size: 30,
                 ),
                 name: 'System',
                 themeMode: ThemeMode.system,
@@ -73,7 +76,6 @@ Future<void> _showAppearanceOption({
 
 class _AppearanceOption extends StatelessWidget {
   const _AppearanceOption({
-    super.key,
     required this.currentThemeMode,
     required this.icon,
     required this.name,
@@ -118,6 +120,9 @@ class _AppearanceOption extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           icon,
+          const SizedBox(
+            height: 10,
+          ),
           Text(name),
         ],
       ),
