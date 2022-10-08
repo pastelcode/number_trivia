@@ -48,6 +48,7 @@ mixin ApplicationTheme {
       colorScheme: colorScheme,
       useMaterial3: true,
       appBarTheme: _appBarTheme,
+      canvasColor: colorScheme.surfaceVariant,
       scaffoldBackgroundColor: colorScheme.surface,
       bottomSheetTheme: BottomSheetThemeData(
         modalBackgroundColor: colorScheme.surface,
