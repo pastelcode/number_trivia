@@ -14,6 +14,18 @@ mixin ApplicationTheme {
         toolbarHeight: appBarHeight,
       );
 
+  static InputDecorationTheme get _inputDecorationTheme =>
+      const InputDecorationTheme(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(15),
+          ),
+          borderSide: BorderSide(
+            width: 10,
+          ),
+        ),
+      );
+
   static ColorScheme get _lightColorScheme => ColorScheme.fromSeed(
         seedColor: primaryColor,
       );
@@ -26,6 +38,14 @@ mixin ApplicationTheme {
   static ThemeData _getThemeBasedOnColorScheme({
     required ColorScheme colorScheme,
   }) {
+    final buttonStyle = TextButton.styleFrom(
+      foregroundColor: colorScheme.onSurface,
+      elevation: 0,
+      padding: const EdgeInsets.all(
+        20,
+      ),
+    );
+
     return ThemeData(
       colorScheme: colorScheme,
       useMaterial3: true,
@@ -33,6 +53,16 @@ mixin ApplicationTheme {
       scaffoldBackgroundColor: colorScheme.surface,
       bottomSheetTheme: BottomSheetThemeData(
         modalBackgroundColor: colorScheme.surface,
+      ),
+      inputDecorationTheme: _inputDecorationTheme,
+      textButtonTheme: TextButtonThemeData(
+        style: buttonStyle,
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: buttonStyle,
+      ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: buttonStyle,
       ),
     );
   }

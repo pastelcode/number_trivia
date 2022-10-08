@@ -36,6 +36,7 @@ Future<void> _showAppearanceOption({
           return GridView.count(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
+            childAspectRatio: 0.75,
             crossAxisCount: 3,
             crossAxisSpacing: 5,
             children: <Widget>[
@@ -96,7 +97,7 @@ class _AppearanceOption extends StatelessWidget {
     );
     final isSelected = currentThemeMode == themeMode;
 
-    return OutlinedButton(
+    return TextButton(
       onPressed: () {
         context.read<ThemeBloc>().add(
               ChangeTheme(
@@ -110,7 +111,6 @@ class _AppearanceOption extends StatelessWidget {
             15,
           ),
         ),
-        foregroundColor: theme.colorScheme.onSurface,
         side: BorderSide(
           width: 3,
           color: isSelected ? theme.colorScheme.primary : Colors.transparent,
