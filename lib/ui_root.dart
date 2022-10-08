@@ -21,10 +21,8 @@ class _UiRoot extends StatelessWidget {
           darkTheme: ApplicationTheme.darkTheme,
           title: 'Number trivia',
           themeMode: state,
-          home: const ScrollConfiguration(
-            behavior: _ScrollBehaviorModified(),
-            child: NumberTriviaPage(),
-          ),
+          scrollBehavior: const _ScrollBehaviorModified(),
+          home: const NumberTriviaPage(),
         );
       },
     );

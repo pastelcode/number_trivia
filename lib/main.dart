@@ -40,6 +40,12 @@ void main() async {
   );
   // Set up Hydrated Bloc ->
 
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.transparent,
+    ),
+  );
+
   HydratedBlocOverrides.runZoned(
     () {
       runApp(

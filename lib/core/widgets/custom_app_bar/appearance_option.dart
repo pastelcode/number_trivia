@@ -34,6 +34,7 @@ Future<void> _showAppearanceOption({
           ThemeMode state,
         ) {
           return GridView.count(
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             crossAxisCount: 3,
             crossAxisSpacing: 5,
@@ -109,7 +110,7 @@ class _AppearanceOption extends StatelessWidget {
         ),
         foregroundColor: theme.colorScheme.onSurface,
         side: BorderSide(
-          width: 5,
+          width: 3,
           color: isSelected ? theme.colorScheme.primary : Colors.transparent,
         ),
       ),

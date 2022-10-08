@@ -26,9 +26,6 @@ mixin ApplicationTheme {
       colorScheme: colorScheme,
       useMaterial3: true,
       appBarTheme: _appBarTheme,
-      iconTheme: const IconThemeData().copyWith(
-        color: colorScheme.onSurface,
-      ),
       bottomSheetTheme: BottomSheetThemeData(
         modalBackgroundColor: colorScheme.surface,
       ),
