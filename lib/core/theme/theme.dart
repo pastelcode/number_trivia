@@ -3,6 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 /// An interface for application themes.
 mixin ApplicationTheme {
+  /// The border radius for common elements in application.
+  static double get borderRadius => 10;
+
   /// The primary color of the application.
   static Color get primaryColor => Colors.cyan;
 
@@ -14,11 +17,12 @@ mixin ApplicationTheme {
         toolbarHeight: appBarHeight,
       );
 
-  static InputDecorationTheme get _inputDecorationTheme =>
-      const InputDecorationTheme(
+  static InputDecorationTheme get _inputDecorationTheme => InputDecorationTheme(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(
-            Radius.circular(10),
+            Radius.circular(
+              borderRadius,
+            ),
           ),
         ),
       );
