@@ -18,6 +18,7 @@ class _NumberInput extends StatelessWidget {
         label: Text('Number'),
         hintText: '5155',
       ),
+      keyboardType: TextInputType.number,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (
         String? value,
