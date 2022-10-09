@@ -42,7 +42,7 @@ void main() {
       // We'll use these three variables throughout all the tests
       const number = 1;
       const numberTriviaType = NumberTriviaType.trivia;
-      final numberTriviaModel = const NumberTriviaModel(
+      const numberTriviaModel = NumberTriviaModel(
         text: 'test trivia',
         number: number,
       );
