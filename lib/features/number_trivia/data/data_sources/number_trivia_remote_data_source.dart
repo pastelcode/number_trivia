@@ -53,6 +53,7 @@ class NumberTriviaRemoteDataSourceImpl with NumberTriviaRemoteDataSource {
 
     if (response.statusCode != 200) {
       throw ServerException(
+        message: response.body,
         statusCode: response.statusCode,
       );
     }

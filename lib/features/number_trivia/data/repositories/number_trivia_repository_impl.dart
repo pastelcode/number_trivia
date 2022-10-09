@@ -38,9 +38,11 @@ class NumberTriviaRepositoryImpl extends Equatable with NumberTriviaRepository {
         return Right(
           localNumberTrivia.toEntity(),
         );
-      } on CacheException {
-        return const Left(
-          CacheFailure(),
+      } on CacheException catch (exception) {
+        return Left(
+          CacheFailure(
+            message: exception.message,
+          ),
         );
       }
     }
@@ -61,6 +63,7 @@ class NumberTriviaRepositoryImpl extends Equatable with NumberTriviaRepository {
     } on ServerException catch (exception) {
       return Left(
         ServerFailure(
+          message: exception.message,
           statusCode: exception.statusCode,
         ),
       );

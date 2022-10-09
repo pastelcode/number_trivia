@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:number_trivia/core/utils/utils.dart';
 
 /// {@template custom_exception}
 /// A base class for custom exceptions.
@@ -6,21 +7,39 @@ import 'package:equatable/equatable.dart';
 abstract class _CustomException extends Equatable implements Exception {
   /// {@macro custom_exception}
   const _CustomException({
-    this.message,
+    required this.message,
   });
 
+  /// The title for this exception.
+  String get title => '$runtimeType';
+
+  /// The title for this exception in a human readable format.
+  String get titleAsHumanReadable => formatClassName(
+        className: title,
+      );
+
   /// The message of this exception.
-  final String? message;
+  final String message;
 
   @override
   String toString() {
-    return '$this: [message: $message]';
+    return '$title: [${props.map<String>(
+          (
+            Map<String, dynamic> element,
+          ) {
+            final keyName = element.entries.toList()[0].key;
+            final value = element.entries.toList()[0].value;
+            return '$keyName: $value';
+          },
+        ).toList().join(
+          ', ',
+        )}]';
   }
 
+  /// **Note**: for [toString] to work properly, [props] should be a list
+  /// of map with the name of the prop as the key and its corresponding value.
   @override
-  List<Object?> get props => [
-        message,
-      ];
+  List<Map<String, dynamic>> get props => [];
 }
 
 /// {@template server_exception}
@@ -29,7 +48,7 @@ abstract class _CustomException extends Equatable implements Exception {
 class ServerException extends _CustomException {
   /// {@macro server_exception}
   const ServerException({
-    super.message,
+    required super.message,
     required this.statusCode,
   });
 
@@ -37,14 +56,13 @@ class ServerException extends _CustomException {
   final int statusCode;
 
   @override
-  String toString() {
-    return '$this: [message: $message statusCode: $statusCode]';
-  }
-
-  @override
-  List<Object?> get props => [
-        message,
-        statusCode,
+  List<Map<String, dynamic>> get props => [
+        {
+          'message': message,
+        },
+        {
+          'status code': statusCode,
+        },
       ];
 }
 
@@ -54,6 +72,6 @@ class ServerException extends _CustomException {
 class CacheException extends _CustomException {
   /// {@macro cache_exception}
   const CacheException({
-    super.message,
+    required super.message,
   });
 }

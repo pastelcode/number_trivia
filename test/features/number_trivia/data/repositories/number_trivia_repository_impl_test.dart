@@ -42,7 +42,7 @@ void main() {
       // We'll use these three variables throughout all the tests
       const number = 1;
       const numberTriviaType = NumberTriviaType.trivia;
-      final numberTriviaModel = NumberTriviaModel(
+      final numberTriviaModel = const NumberTriviaModel(
         text: 'test trivia',
         number: number,
       );
@@ -230,6 +230,7 @@ void main() {
                 },
               ).thenThrow(
                 const ServerException(
+                  message: 'A server exception',
                   statusCode: 400,
                 ),
               );
@@ -257,6 +258,7 @@ void main() {
                 equals(
                   const Left<Failure, NumberTrivia>(
                     ServerFailure(
+                      message: 'A server exception',
                       statusCode: 400,
                     ),
                   ),
@@ -331,7 +333,9 @@ void main() {
               when(
                 localDataSource.getLastNumberTrivia,
               ).thenThrow(
-                const CacheException(),
+                const CacheException(
+                  message: 'A cache exception',
+                ),
               );
 
               // act
@@ -351,7 +355,9 @@ void main() {
                 result,
                 equals(
                   const Left<Failure, NumberTrivia>(
-                    CacheFailure(),
+                    CacheFailure(
+                      message: 'A cache exception',
+                    ),
                   ),
                 ),
               );

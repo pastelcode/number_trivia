@@ -260,6 +260,7 @@ void main() {
             ) async {
               return const Left(
                 ServerFailure(
+                  message: 'A server failure',
                   statusCode: 400,
                 ),
               );
@@ -279,6 +280,7 @@ void main() {
             const Loading(),
             const Failed(
               failure: ServerFailure(
+                message: 'A server failure',
                 statusCode: 400,
               ),
             ),
@@ -310,7 +312,9 @@ void main() {
               _,
             ) async {
               return const Left(
-                CacheFailure(),
+                CacheFailure(
+                  message: 'A cache failure',
+                ),
               );
             },
           );
@@ -327,7 +331,9 @@ void main() {
           final expected = [
             const Loading(),
             const Failed(
-              failure: CacheFailure(),
+              failure: CacheFailure(
+                message: 'A cache failure',
+              ),
             ),
           ];
           await expectLater(
