@@ -7,6 +7,7 @@ import 'package:number_trivia/features/number_trivia/presentation/bloc/bloc.dart
 
 part '../widgets/number_trivia_page/form.dart';
 part '../widgets/number_trivia_page/number_input.dart';
+part '../widgets/number_trivia_page/trivia_displayer.dart';
 part '../widgets/number_trivia_page/type_input.dart';
 
 /// {@template number_trivia_page}
@@ -32,13 +33,13 @@ class NumberTriviaPage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: 10,
+          horizontal: 20,
         ),
         child: ListView(
           children: <Widget>[
             SizedBox(
               height: size.height / 3,
-              child: const Placeholder(),
+              child: const _TriviaDisplayer(),
             ),
             const SizedBox(
               height: 20,
