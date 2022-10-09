@@ -13,10 +13,6 @@ class _TypeInput extends StatelessWidget {
   Widget build(
     BuildContext context,
   ) {
-    final theme = Theme.of(
-      context,
-    );
-
     return DropdownButtonFormField<NumberTriviaType>(
       hint: const Text('Type'),
       elevation: 0,

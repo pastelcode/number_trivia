@@ -55,14 +55,9 @@ class __NumberFormState extends State<_NumberForm> {
               Expanded(
                 child: Button(
                   onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      context.read<NumberTriviaBloc>().add(
-                            GetTrivia(
-                              numberString: number,
-                              type: type,
-                            ),
-                          );
-                    }
+                    _getTrivia(
+                      context: context,
+                    );
                   },
                   icon: const Icon(
                     FlutterRemix.search_line,
@@ -88,5 +83,18 @@ class __NumberFormState extends State<_NumberForm> {
         ],
       ),
     );
+  }
+
+  void _getTrivia({
+    required BuildContext context,
+  }) {
+    if (formKey.currentState!.validate()) {
+      context.read<NumberTriviaBloc>().add(
+            GetTrivia(
+              numberString: number,
+              type: type,
+            ),
+          );
+    }
   }
 }
