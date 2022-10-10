@@ -58,6 +58,14 @@ mixin ApplicationTheme {
       scaffoldBackgroundColor: colorScheme.surface,
       bottomSheetTheme: BottomSheetThemeData(
         modalBackgroundColor: colorScheme.surface,
+        clipBehavior: Clip.hardEdge,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(
+              ApplicationTheme.borderRadius,
+            ),
+          ),
+        ),
       ),
       inputDecorationTheme: _inputDecorationTheme,
       textButtonTheme: TextButtonThemeData(

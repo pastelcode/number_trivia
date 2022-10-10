@@ -10,9 +10,16 @@ Future<T?> showCustomModalBottomSheet<T>({
   List<Widget>? children,
   EdgeInsets padding = EdgeInsets.zero,
 }) async {
+  final width = MediaQuery.of(
+    context,
+  ).size.width;
+
   return showModalBottomSheet<T>(
     context: context,
     isScrollControlled: true,
+    constraints: BoxConstraints(
+      maxWidth: width * 0.95,
+    ),
     builder: (
       BuildContext context,
     ) {
