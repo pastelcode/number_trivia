@@ -36,7 +36,6 @@ Future<void> _showAppearanceOption({
           return GridView.count(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            childAspectRatio: 0.75,
             crossAxisCount: 3,
             crossAxisSpacing: 5,
             children: <Widget>[
@@ -44,28 +43,25 @@ Future<void> _showAppearanceOption({
                 themeMode: ThemeMode.light,
                 currentThemeMode: state,
                 name: 'Light',
-                icon: const Icon(
-                  FlutterRemix.sun_line,
-                  size: 30,
+                icon: SvgPicture.asset(
+                  'assets/svg/sun.svg',
                 ),
               ),
               _AppearanceOption(
                 themeMode: ThemeMode.dark,
                 currentThemeMode: state,
                 name: 'Dark',
-                icon: const Icon(
-                  FlutterRemix.moon_line,
-                  size: 30,
+                icon: SvgPicture.asset(
+                  'assets/svg/moon.svg',
                 ),
               ),
               _AppearanceOption(
-                currentThemeMode: state,
-                icon: const Icon(
-                  FlutterRemix.computer_line,
-                  size: 30,
-                ),
-                name: 'System',
                 themeMode: ThemeMode.system,
+                currentThemeMode: state,
+                name: 'System',
+                icon: SvgPicture.asset(
+                  'assets/svg/computer.svg',
+                ),
               ),
             ],
           );
@@ -116,15 +112,27 @@ class _AppearanceOption extends StatelessWidget {
           color: isSelected ? theme.colorScheme.primary : Colors.transparent,
         ),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          icon,
-          const SizedBox(
-            height: 10,
-          ),
-          Text(name),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: 10,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+              child: icon,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              name,
+              style: GoogleFonts.inter(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

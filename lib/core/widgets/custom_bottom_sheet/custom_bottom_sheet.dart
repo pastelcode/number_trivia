@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:number_trivia/core/theme/theme.dart';
 import 'package:number_trivia/core/widgets/widgets.dart';
 
@@ -56,7 +57,7 @@ class _CustomBottomSheet extends StatelessWidget {
               centerTitle: false,
               title: title != null
                   ? DefaultTextStyle.merge(
-                      style: const TextStyle(
+                      style: GoogleFonts.inter(
                         fontWeight: FontWeight.bold,
                       ),
                       child: title!,

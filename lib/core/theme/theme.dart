@@ -12,11 +12,6 @@ mixin ApplicationTheme {
   /// The height for global app bars.
   static double get appBarHeight => 75;
 
-  static AppBarTheme get _appBarTheme => AppBarTheme(
-        centerTitle: true,
-        toolbarHeight: appBarHeight,
-      );
-
   static InputDecorationTheme get _inputDecorationTheme => InputDecorationTheme(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(
@@ -29,6 +24,7 @@ mixin ApplicationTheme {
 
   static ColorScheme get _lightColorScheme => ColorScheme.fromSeed(
         seedColor: primaryColor,
+        surfaceTint: Colors.transparent,
       );
 
   static ColorScheme get _darkColorScheme => ColorScheme.fromSeed(
@@ -49,9 +45,15 @@ mixin ApplicationTheme {
     );
 
     return ThemeData(
-      colorScheme: colorScheme,
+      colorScheme: colorScheme.copyWith(
+        surfaceTint: colorScheme.surface,
+      ),
       useMaterial3: true,
-      appBarTheme: _appBarTheme,
+      appBarTheme: AppBarTheme(
+        centerTitle: true,
+        toolbarHeight: appBarHeight,
+        backgroundColor: colorScheme.surface,
+      ),
       canvasColor: colorScheme.surfaceVariant,
       scaffoldBackgroundColor: colorScheme.surface,
       bottomSheetTheme: BottomSheetThemeData(
