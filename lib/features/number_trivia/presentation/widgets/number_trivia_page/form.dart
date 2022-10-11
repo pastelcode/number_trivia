@@ -59,6 +59,7 @@ class __NumberFormState extends State<_NumberForm> {
                       context: context,
                     );
                   },
+                  isVertical: true,
                   icon: const Icon(
                     FlutterRemix.search_line,
                   ),
@@ -71,6 +72,7 @@ class __NumberFormState extends State<_NumberForm> {
               Expanded(
                 child: Button(
                   onPressed: () {},
+                  isVertical: true,
                   icon: const Icon(
                     FlutterRemix.shuffle_line,
                   ),

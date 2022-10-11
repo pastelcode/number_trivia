@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:number_trivia/core/theme/theme.dart';
-import 'package:number_trivia/core/widgets/widgets.dart';
 
 /// Shows a custom modal bottom sheet.
 Future<T?> showCustomModalBottomSheet<T>({
   required BuildContext context,
   Widget? title,
   List<Widget>? children,
-  EdgeInsets padding = EdgeInsets.zero,
+  EdgeInsets padding = const EdgeInsets.symmetric(
+    horizontal: 20,
+  ),
+  MainAxisAlignment mainAxisAlignment = MainAxisAlignment.center,
 }) async {
   final width = MediaQuery.of(
     context,
@@ -26,6 +27,7 @@ Future<T?> showCustomModalBottomSheet<T>({
       return _CustomBottomSheet(
         title: title,
         padding: padding,
+        mainAxisAlignment: mainAxisAlignment,
         children: children,
       );
     },
@@ -37,11 +39,13 @@ class _CustomBottomSheet extends StatelessWidget {
     this.title,
     this.children,
     required this.padding,
+    required this.mainAxisAlignment,
   });
 
   final Widget? title;
   final List<Widget>? children;
   final EdgeInsets padding;
+  final MainAxisAlignment mainAxisAlignment;
 
   @override
   Widget build(
@@ -63,21 +67,35 @@ class _CustomBottomSheet extends StatelessWidget {
               pinned: true,
               centerTitle: false,
               title: title != null
-                  ? DefaultTextStyle.merge(
-                      style: GoogleFonts.inter(
-                        fontWeight: FontWeight.bold,
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
                       ),
-                      child: title!,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          DefaultTextStyle.merge(
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                            child: title!,
+                          ),
+                          const CloseButton(),
+                        ],
+                      ),
                     )
                   : null,
-              leading: const CustomBackButton(),
+              automaticallyImplyLeading: false,
             ),
             SliverPadding(
               padding: padding,
               sliver: SliverList(
                 delegate: SliverChildListDelegate(
                   <Widget>[
-                    ...?children,
+                    Column(
+                      mainAxisAlignment: mainAxisAlignment,
+                      children: children ?? <Widget>[],
+                    ),
                   ],
                 ),
               ),

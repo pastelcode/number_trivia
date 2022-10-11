@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_remix/flutter_remix.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:number_trivia/core/presentation/bloc/bloc.dart';
 import 'package:number_trivia/core/theme/theme.dart';
 import 'package:number_trivia/core/widgets/widgets.dart';
+import 'package:number_trivia/gen/assets.gen.dart';
 
+part 'about_option.dart';
 part 'appearance_option.dart';
 part 'application_menu_button.dart';
 
@@ -42,7 +43,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ? const CustomBackButton()
           : null,
       title: DefaultTextStyle.merge(
-        style: GoogleFonts.inter(
+        style: const TextStyle(
           fontWeight: FontWeight.bold,
         ),
         child: title,

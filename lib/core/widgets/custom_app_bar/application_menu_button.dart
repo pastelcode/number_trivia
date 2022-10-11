@@ -34,6 +34,7 @@ class ApplicationMenuButton extends StatelessWidget {
       title: const Text('Settings'),
       children: <Widget>[
         const _AppearanceOptions(),
+        const _AboutOption(),
       ],
     );
   }

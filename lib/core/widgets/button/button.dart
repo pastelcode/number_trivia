@@ -11,7 +11,7 @@ class Button extends StatelessWidget {
     this.icon,
     required this.title,
     this.isPrimary = false,
-    this.isHorizontal = false,
+    this.isVertical = false,
   });
 
   /// The callback when button is pressed.
@@ -27,7 +27,7 @@ class Button extends StatelessWidget {
   final bool isPrimary;
 
   /// Whether [icon] and [title] should be in a [Row] instead of [Column].
-  final bool isHorizontal;
+  final bool isVertical;
 
   @override
   Widget build(
@@ -36,30 +36,35 @@ class Button extends StatelessWidget {
     final theme = Theme.of(
       context,
     );
+
     final children = <Widget>[
       if (icon != null) ...[
         icon!,
         SizedBox(
-          height: isHorizontal ? 0 : 10,
-          width: isHorizontal ? 10 : 0,
+          height: isVertical ? 10 : 0,
+          width: isVertical ? 0 : 10,
         ),
       ],
       title,
     ];
 
+    const mainAxisAlignment = MainAxisAlignment.center;
+    const mainAxisSize = MainAxisSize.min;
+
     return TextButton(
       onPressed: onPressed,
       style: TextButton.styleFrom(
-        foregroundColor:
-            isPrimary ? theme.colorScheme.primary : theme.colorScheme.onSurface,
+        foregroundColor: isPrimary ? theme.colorScheme.primary : null,
       ),
-      child: isHorizontal
-          ? Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+      child: isVertical
+          ? Column(
+              mainAxisAlignment: mainAxisAlignment,
+              mainAxisSize: mainAxisSize,
               children: children,
             )
-          : Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+          : Row(
+              mainAxisAlignment: mainAxisAlignment,
+              mainAxisSize: mainAxisSize,
               children: children,
             ),
     );

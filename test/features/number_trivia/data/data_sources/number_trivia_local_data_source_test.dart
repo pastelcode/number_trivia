@@ -100,7 +100,7 @@ void main() {
   group(
     'cacheNumberTrivia',
     () {
-      final numberTriviaModel = NumberTriviaModel(
+      const numberTriviaModel = NumberTriviaModel(
         number: 1,
         text: 'Test',
       );

@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:number_trivia/core/presentation/bloc/bloc.dart';
 import 'package:number_trivia/core/theme/theme.dart';
@@ -30,8 +29,6 @@ void main() async {
       );
     },
   );
-
-  GoogleFonts.config.allowRuntimeFetching = false;
 
   await initInjectionContainer();
 

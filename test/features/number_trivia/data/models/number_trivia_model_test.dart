@@ -6,7 +6,7 @@ import 'package:number_trivia/features/number_trivia/domain/entities/entities.da
 import '../../../../fixtures/fixture_reader.dart';
 
 void main() {
-  final numberTriviaModel = NumberTriviaModel(
+  const numberTriviaModel = NumberTriviaModel(
     text: 'Test text',
     number: 1,
   );

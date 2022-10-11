@@ -16,59 +16,56 @@ class _AppearanceOptions extends StatelessWidget {
       },
     );
   }
-}
 
-Future<void> _showAppearanceOption({
-  required BuildContext context,
-}) async {
-  await showCustomModalBottomSheet<void>(
-    context: context,
-    title: const Text('Appearance'),
-    padding: const EdgeInsets.symmetric(
-      horizontal: 20,
-    ),
-    children: <Widget>[
-      BlocBuilder<ThemeBloc, ThemeMode>(
-        builder: (
-          BuildContext context,
-          ThemeMode state,
-        ) {
-          return GridView.count(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            crossAxisCount: 3,
-            crossAxisSpacing: 5,
-            children: <Widget>[
-              _AppearanceOption(
-                themeMode: ThemeMode.light,
-                currentThemeMode: state,
-                name: 'Light',
-                icon: SvgPicture.asset(
-                  'assets/svg/sun.svg',
+  Future<void> _showAppearanceOption({
+    required BuildContext context,
+  }) async {
+    await showCustomModalBottomSheet<void>(
+      context: context,
+      title: const Text('Appearance'),
+      children: <Widget>[
+        BlocBuilder<ThemeBloc, ThemeMode>(
+          builder: (
+            BuildContext context,
+            ThemeMode state,
+          ) {
+            return GridView.count(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              crossAxisCount: 3,
+              crossAxisSpacing: 5,
+              children: <Widget>[
+                _AppearanceOption(
+                  themeMode: ThemeMode.light,
+                  currentThemeMode: state,
+                  name: 'Light',
+                  icon: SvgPicture.asset(
+                    'assets/svg/sun.svg',
+                  ),
                 ),
-              ),
-              _AppearanceOption(
-                themeMode: ThemeMode.dark,
-                currentThemeMode: state,
-                name: 'Dark',
-                icon: SvgPicture.asset(
-                  'assets/svg/moon.svg',
+                _AppearanceOption(
+                  themeMode: ThemeMode.dark,
+                  currentThemeMode: state,
+                  name: 'Dark',
+                  icon: SvgPicture.asset(
+                    'assets/svg/moon.svg',
+                  ),
                 ),
-              ),
-              _AppearanceOption(
-                themeMode: ThemeMode.system,
-                currentThemeMode: state,
-                name: 'System',
-                icon: SvgPicture.asset(
-                  'assets/svg/computer.svg',
+                _AppearanceOption(
+                  themeMode: ThemeMode.system,
+                  currentThemeMode: state,
+                  name: 'System',
+                  icon: SvgPicture.asset(
+                    'assets/svg/computer.svg',
+                  ),
                 ),
-              ),
-            ],
-          );
-        },
-      ),
-    ],
-  );
+              ],
+            );
+          },
+        ),
+      ],
+    );
+  }
 }
 
 class _AppearanceOption extends StatelessWidget {
@@ -127,7 +124,7 @@ class _AppearanceOption extends StatelessWidget {
             ),
             Text(
               name,
-              style: GoogleFonts.inter(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
               ),
             ),

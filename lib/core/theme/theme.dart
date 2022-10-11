@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:number_trivia/gen/fonts.gen.dart';
 
 /// An interface for application themes.
 mixin ApplicationTheme {
@@ -49,6 +49,7 @@ mixin ApplicationTheme {
         surfaceTint: colorScheme.surface,
       ),
       useMaterial3: true,
+      fontFamily: FontFamily.inter,
       appBarTheme: AppBarTheme(
         centerTitle: true,
         toolbarHeight: appBarHeight,
@@ -67,6 +68,19 @@ mixin ApplicationTheme {
           ),
         ),
       ),
+      dialogTheme: DialogTheme(
+        backgroundColor: colorScheme.surface,
+        elevation: 0,
+        actionsPadding: EdgeInsets.zero,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(
+              ApplicationTheme.borderRadius,
+            ),
+          ),
+        ),
+        // actionsPadding: EdgeInsets.zero,
+      ),
       inputDecorationTheme: _inputDecorationTheme,
       textButtonTheme: TextButtonThemeData(
         style: buttonStyle,
@@ -81,26 +95,12 @@ mixin ApplicationTheme {
   }
 
   /// The light [ThemeData] to pass to a [MaterialApp].
-  static ThemeData get lightTheme {
-    final theme = _getThemeBasedOnColorScheme(
-      colorScheme: _lightColorScheme,
-    );
-    return theme.copyWith(
-      textTheme: GoogleFonts.interTextTheme(
-        theme.textTheme,
-      ),
-    );
-  }
+  static ThemeData get lightTheme => _getThemeBasedOnColorScheme(
+        colorScheme: _lightColorScheme,
+      );
 
   /// The dark [ThemeData] to pass to a [MaterialApp].
-  static ThemeData get darkTheme {
-    final theme = _getThemeBasedOnColorScheme(
-      colorScheme: _darkColorScheme,
-    );
-    return theme.copyWith(
-      textTheme: GoogleFonts.interTextTheme(
-        theme.textTheme,
-      ),
-    );
-  }
+  static ThemeData get darkTheme => _getThemeBasedOnColorScheme(
+        colorScheme: _darkColorScheme,
+      );
 }
