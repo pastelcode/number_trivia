@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:number_trivia/core/utils/utils.dart';
 
 /// {@template failure}
 /// Interface to represent a failure when fetching data from repositories.
@@ -10,20 +9,12 @@ abstract class Failure extends Equatable {
     required this.message,
   });
 
-  /// The title for this failure.
-  String get title => '$runtimeType';
-
-  /// The title for this failure in a human readable format.
-  String get titleAsHumanReadable => formatClassName(
-        className: title,
-      );
-
   /// The message for this failure.
   final String message;
 
   @override
   String toString() {
-    return '$title: [${props.map<String>(
+    return '$runtimeType: [${props.map<String>(
           (
             Map<String, dynamic> element,
           ) {

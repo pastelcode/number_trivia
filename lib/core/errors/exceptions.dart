@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:number_trivia/core/utils/utils.dart';
 
 /// {@template custom_exception}
 /// A base class for custom exceptions.
@@ -10,20 +9,12 @@ abstract class _CustomException extends Equatable implements Exception {
     required this.message,
   });
 
-  /// The title for this exception.
-  String get title => '$runtimeType';
-
-  /// The title for this exception in a human readable format.
-  String get titleAsHumanReadable => formatClassName(
-        className: title,
-      );
-
   /// The message of this exception.
   final String message;
 
   @override
   String toString() {
-    return '$title: [${props.map<String>(
+    return '$runtimeType: [${props.map<String>(
           (
             Map<String, dynamic> element,
           ) {

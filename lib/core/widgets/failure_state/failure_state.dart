@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_remix/flutter_remix.dart';
 import 'package:number_trivia/core/errors/errors.dart';
+import 'package:number_trivia/core/extensions/extensions.dart';
 import 'package:number_trivia/core/theme/theme.dart';
 
 /// {@template failure_state}
@@ -47,7 +48,7 @@ class FailureState extends StatelessWidget {
             height: 20,
           ),
           Text(
-            failure.titleAsHumanReadable,
+            failure.getHumanReadableClassName,
             style: theme.textTheme.headline6,
           ),
           const SizedBox(
