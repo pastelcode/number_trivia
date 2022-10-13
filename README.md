@@ -7,5 +7,5 @@ Get random facts about numbers on subjects like "trivia", "math", "date" or "yea
 ### Generate assets
 
 ```bash
-flutter packages pub run build_runner build
+./generate
 ```

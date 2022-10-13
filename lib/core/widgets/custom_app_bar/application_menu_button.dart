@@ -31,10 +31,25 @@ class ApplicationMenuButton extends StatelessWidget {
   }) async {
     await showCustomModalBottomSheet<void>(
       context: context,
-      title: const Text('Settings'),
-      children: <Widget>[
-        const _AppearanceOptions(),
-        const _AboutOption(),
+      title: const Text(
+        'Settings',
+      ),
+      child: const _ApplicationMenuButtonContent(),
+    );
+  }
+}
+
+class _ApplicationMenuButtonContent extends StatelessWidget {
+  const _ApplicationMenuButtonContent();
+
+  @override
+  Widget build(
+    BuildContext context,
+  ) {
+    return Column(
+      children: const <Widget>[
+        _AppearanceOptions(),
+        _AboutOption(),
       ],
     );
   }

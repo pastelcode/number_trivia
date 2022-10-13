@@ -8,6 +8,7 @@ import 'package:number_trivia/core/widgets/widgets.dart';
 import 'package:number_trivia/gen/assets.gen.dart';
 
 part 'about_option.dart';
+part 'appearance_button.dart';
 part 'appearance_option.dart';
 part 'application_menu_button.dart';
 

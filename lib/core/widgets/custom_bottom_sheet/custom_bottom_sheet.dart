@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:number_trivia/core/theme/theme.dart';
 
 /// Shows a custom modal bottom sheet.
+///
+/// Consider using a [StatelessWidget] that returns a [Column] to pass [child]
+/// to take advantage of Flutter's Hot Reload.
 Future<T?> showCustomModalBottomSheet<T>({
   required BuildContext context,
   Widget? title,
-  List<Widget>? children,
+  Widget? child,
   EdgeInsets padding = const EdgeInsets.symmetric(
     horizontal: 20,
   ),
-  MainAxisAlignment mainAxisAlignment = MainAxisAlignment.center,
 }) async {
   final width = MediaQuery.of(
     context,
@@ -27,8 +29,7 @@ Future<T?> showCustomModalBottomSheet<T>({
       return _CustomBottomSheet(
         title: title,
         padding: padding,
-        mainAxisAlignment: mainAxisAlignment,
-        children: children,
+        child: child,
       );
     },
   );
@@ -37,15 +38,13 @@ Future<T?> showCustomModalBottomSheet<T>({
 class _CustomBottomSheet extends StatelessWidget {
   const _CustomBottomSheet({
     this.title,
-    this.children,
+    this.child,
     required this.padding,
-    required this.mainAxisAlignment,
   });
 
   final Widget? title;
-  final List<Widget>? children;
+  final Widget? child;
   final EdgeInsets padding;
-  final MainAxisAlignment mainAxisAlignment;
 
   @override
   Widget build(
@@ -92,10 +91,7 @@ class _CustomBottomSheet extends StatelessWidget {
               sliver: SliverList(
                 delegate: SliverChildListDelegate(
                   <Widget>[
-                    Column(
-                      mainAxisAlignment: mainAxisAlignment,
-                      children: children ?? <Widget>[],
-                    ),
+                    if (child != null) ...[child!] else ...<Widget>[],
                   ],
                 ),
               ),

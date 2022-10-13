@@ -8,7 +8,9 @@ class _AboutOption extends StatelessWidget {
     BuildContext context,
   ) {
     return ListTile(
-      title: const Text('About'),
+      title: const Text(
+        'About',
+      ),
       onTap: () {
         _showAboutOption(
           context: context,
@@ -23,6 +25,19 @@ class _AboutOption extends StatelessWidget {
     await showCustomModalBottomSheet<void>(
       context: context,
       title: const Text('About'),
+      child: const _AboutOptionContent(),
+    );
+  }
+}
+
+class _AboutOptionContent extends StatelessWidget {
+  const _AboutOptionContent();
+
+  @override
+  Widget build(
+    BuildContext context,
+  ) {
+    return Column(
       children: <Widget>[
         Assets.animations.ghost.lottie(
           height: 125,
@@ -60,7 +75,7 @@ class _AboutOption extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              Assets.svg.pastelcode.svg(
+              Assets.illustrations.pastelcode.svg(
                 height: 75,
               ),
             ],

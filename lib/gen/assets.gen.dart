@@ -45,20 +45,22 @@ class $AssetsFontsGen {
   $AssetsFontsInterGen get inter => const $AssetsFontsInterGen();
 }
 
-class $AssetsSvgGen {
-  const $AssetsSvgGen();
+class $AssetsIllustrationsGen {
+  const $AssetsIllustrationsGen();
 
-  /// File path: assets/svg/computer.svg
-  SvgGenImage get computer => const SvgGenImage('assets/svg/computer.svg');
+  /// File path: assets/illustrations/computer.svg
+  SvgGenImage get computer =>
+      const SvgGenImage('assets/illustrations/computer.svg');
 
-  /// File path: assets/svg/moon.svg
-  SvgGenImage get moon => const SvgGenImage('assets/svg/moon.svg');
+  /// File path: assets/illustrations/moon.svg
+  SvgGenImage get moon => const SvgGenImage('assets/illustrations/moon.svg');
 
-  /// File path: assets/svg/pastelcode.svg
-  SvgGenImage get pastelcode => const SvgGenImage('assets/svg/pastelcode.svg');
+  /// File path: assets/illustrations/pastelcode.svg
+  SvgGenImage get pastelcode =>
+      const SvgGenImage('assets/illustrations/pastelcode.svg');
 
-  /// File path: assets/svg/sun.svg
-  SvgGenImage get sun => const SvgGenImage('assets/svg/sun.svg');
+  /// File path: assets/illustrations/sun.svg
+  SvgGenImage get sun => const SvgGenImage('assets/illustrations/sun.svg');
 
   /// List of all assets
   List<SvgGenImage> get values => [computer, moon, pastelcode, sun];
@@ -121,7 +123,8 @@ class Assets {
 
   static const $AssetsAnimationsGen animations = $AssetsAnimationsGen();
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
-  static const $AssetsSvgGen svg = $AssetsSvgGen();
+  static const $AssetsIllustrationsGen illustrations =
+      $AssetsIllustrationsGen();
 }
 
 class AssetGenImage {
