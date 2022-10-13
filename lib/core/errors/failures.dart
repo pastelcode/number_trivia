@@ -30,7 +30,11 @@ abstract class Failure extends Equatable {
   /// **Note**: for [toString] to work properly, [props] should be a list
   /// of map with the name of the prop as the key and its corresponding value.
   @override
-  List<Map<String, dynamic>> get props => [];
+  List<Map<String, dynamic>> get props => [
+        {
+          'message': message,
+        },
+      ];
 }
 
 /// {@template server_failure}
@@ -72,11 +76,14 @@ class InvalidInputFailure extends Failure {
   const InvalidInputFailure({
     required super.message,
   });
+}
 
-  @override
-  List<Map<String, dynamic>> get props => [
-        {
-          'message': message,
-        },
-      ];
+/// {@template not_found_failure}
+/// A failure to indicate an item was not found.
+/// {@endtemplate}
+class NotFoundFailure extends Failure {
+  /// {@macro not_found_failure}
+  const NotFoundFailure({
+    required super.message,
+  });
 }

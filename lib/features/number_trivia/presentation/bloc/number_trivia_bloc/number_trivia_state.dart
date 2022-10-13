@@ -45,6 +45,19 @@ class Loaded extends NumberTriviaState {
       ];
 }
 
+/// {@template not_found}
+/// A state representing that a trivia was not found for a number.
+/// {@endtemplate}
+class NotFound extends NumberTriviaState {
+  /// {@macro not_found}
+  const NotFound({
+    required this.failure,
+  });
+
+  /// The failure this state contains
+  final Failure failure;
+}
+
 /// {@template failed}
 /// A failed state representing that a failure has been returned from operations
 /// like converting input, fetching a trivia or something else.

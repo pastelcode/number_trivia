@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:number_trivia/core/errors/errors.dart';
@@ -61,10 +63,20 @@ class NumberTriviaRepositoryImpl extends Equatable with NumberTriviaRepository {
         remoteNumberTrivia.toEntity(),
       );
     } on ServerException catch (exception) {
+      log('$exception');
+
       return Left(
         ServerFailure(
           message: exception.message,
           statusCode: exception.statusCode,
+        ),
+      );
+    } on NotFoundException catch (exception) {
+      log('$exception');
+
+      return Left(
+        NotFoundFailure(
+          message: exception.message,
         ),
       );
     }

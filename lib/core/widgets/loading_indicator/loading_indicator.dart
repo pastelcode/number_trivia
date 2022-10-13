@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
+import 'package:number_trivia/gen/assets.gen.dart';
 
 /// {@template loading_indicator}
 /// A custom loading indicator that uses a Lottie animation.
@@ -17,17 +17,17 @@ class LoadingIndicator extends StatelessWidget {
     final theme = Theme.of(
       context,
     );
-    final animationMode =
-        theme.brightness == Brightness.light ? 'black' : 'white';
+
+    final animation = theme.brightness == Brightness.light
+        ? Assets.animations.loadingBlack
+        : Assets.animations.loadingWhite;
 
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Expanded(
-            child: Lottie.asset(
-              'assets/animations/loading_$animationMode.json',
-            ),
+            child: animation.lottie(),
           ),
         ],
       ),

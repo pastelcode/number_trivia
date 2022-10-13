@@ -4,8 +4,13 @@ import 'package:flutter_remix/flutter_remix.dart';
 import 'package:number_trivia/core/widgets/widgets.dart';
 import 'package:number_trivia/features/number_trivia/domain/entities/entities.dart';
 import 'package:number_trivia/features/number_trivia/presentation/bloc/bloc.dart';
+import 'package:number_trivia/gen/assets.gen.dart';
 
+part '../widgets/number_trivia_page/animated_arrow_down.dart';
+part '../widgets/number_trivia_page/animated_number.dart';
+part '../widgets/number_trivia_page/empty_state.dart';
 part '../widgets/number_trivia_page/form.dart';
+part '../widgets/number_trivia_page/not_found.dart';
 part '../widgets/number_trivia_page/number_input.dart';
 part '../widgets/number_trivia_page/trivia_displayer.dart';
 part '../widgets/number_trivia_page/type_input.dart';

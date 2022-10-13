@@ -30,7 +30,11 @@ abstract class _CustomException extends Equatable implements Exception {
   /// **Note**: for [toString] to work properly, [props] should be a list
   /// of map with the name of the prop as the key and its corresponding value.
   @override
-  List<Map<String, dynamic>> get props => [];
+  List<Map<String, dynamic>> get props => [
+        {
+          'message': message,
+        },
+      ];
 }
 
 /// {@template server_exception}
@@ -63,6 +67,16 @@ class ServerException extends _CustomException {
 class CacheException extends _CustomException {
   /// {@macro cache_exception}
   const CacheException({
+    required super.message,
+  });
+}
+
+/// {@template not_found_exception}
+/// An exception to indicate an item from data sources was not found.
+/// {@endtemplate}
+class NotFoundException extends _CustomException {
+  /// {@macro not_found_exception}
+  const NotFoundException({
     required super.message,
   });
 }

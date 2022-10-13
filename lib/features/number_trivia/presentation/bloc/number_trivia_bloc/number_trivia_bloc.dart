@@ -18,6 +18,7 @@ part 'number_trivia_state.dart';
 /// - [Empty]
 /// - [Loading]
 /// - [Loaded]
+/// - [NotFound]
 /// - [Failed]
 /// {@endtemplate}
 class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
@@ -74,9 +75,13 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
             Failure failure,
           ) {
             emit(
-              Failed(
-                failure: failure,
-              ),
+              failure is NotFoundFailure
+                  ? NotFound(
+                      failure: failure,
+                    )
+                  : Failed(
+                      failure: failure,
+                    ),
             );
           },
           (

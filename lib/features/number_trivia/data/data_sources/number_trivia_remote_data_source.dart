@@ -58,8 +58,16 @@ class NumberTriviaRemoteDataSourceImpl with NumberTriviaRemoteDataSource {
       );
     }
 
-    return NumberTriviaModel.fromJson(
+    final numberTriviaModel = NumberTriviaModel.fromJson(
       response.body,
     );
+
+    if (!numberTriviaModel.found) {
+      throw NotFoundException(
+        message: 'Could not find a trivia for $number',
+      );
+    }
+
+    return numberTriviaModel;
   }
 }

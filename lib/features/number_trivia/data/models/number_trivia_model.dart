@@ -12,6 +12,7 @@ class NumberTriviaModel extends Equatable with ModelOf<NumberTrivia> {
   const NumberTriviaModel({
     required this.text,
     required this.number,
+    required this.found,
   });
 
   /// {@macro number_trivia_model}
@@ -29,7 +30,8 @@ class NumberTriviaModel extends Equatable with ModelOf<NumberTrivia> {
   ) {
     return NumberTriviaModel(
       text: json['text'] as String,
-      number: (json['number'] as num).toInt(),
+      number: json['number'] != null ? (json['number'] as num).toInt() : null,
+      found: json['found'] as bool,
     );
   }
 
@@ -37,13 +39,16 @@ class NumberTriviaModel extends Equatable with ModelOf<NumberTrivia> {
   final String text;
 
   /// {@macro number_trivia__number}
-  final int number;
+  final int? number;
+
+  /// Whether the number trivia for [number] was found in API.
+  final bool found;
 
   @override
   NumberTrivia toEntity() {
     return NumberTrivia(
       text: text,
-      number: number,
+      number: number!,
     );
   }
 
@@ -59,6 +64,7 @@ class NumberTriviaModel extends Equatable with ModelOf<NumberTrivia> {
     return {
       'text': text,
       'number': number,
+      'found': found,
     };
   }
 
@@ -67,6 +73,7 @@ class NumberTriviaModel extends Equatable with ModelOf<NumberTrivia> {
     return [
       text,
       number,
+      found,
     ];
   }
 }
