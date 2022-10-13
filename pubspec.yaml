@@ -38,6 +38,7 @@ dependencies:
   flutter_remix: ^0.0.3
   flutter_svg: ^1.1.5
   get_it: ^7.2.0
+  google_mobile_ads: ^2.1.0
   http: ^0.13.5
   hydrated_bloc: ^8.1.0
   internet_connection_checker: ^1.0.0+1
