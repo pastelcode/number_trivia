@@ -15,8 +15,10 @@ class _NumberInput extends StatelessWidget {
   ) {
     return TextFormField(
       decoration: const InputDecoration(
-        label: Text('Number'),
-        hintText: '5155',
+        label: Text(
+          'Number',
+        ),
+        hintText: '51',
       ),
       keyboardType: TextInputType.number,
       autovalidateMode: AutovalidateMode.onUserInteraction,

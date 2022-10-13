@@ -14,6 +14,7 @@ class _TypeInput extends StatelessWidget {
     BuildContext context,
   ) {
     return DropdownButtonFormField<NumberTriviaType>(
+      value: NumberTriviaType.trivia,
       icon: const Icon(
         FlutterRemix.arrow_drop_down_line,
       ),
