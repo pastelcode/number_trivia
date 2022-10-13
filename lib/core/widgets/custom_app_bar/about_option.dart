@@ -59,13 +59,13 @@ class _AboutOptionContent extends StatelessWidget {
           onTap: () {},
           child: Column(
             children: <Widget>[
-              const Text.rich(
+              Text.rich(
                 TextSpan(
                   text: 'Developed by ',
                   children: <InlineSpan>[
                     TextSpan(
-                      text: 'Pastel',
-                      style: TextStyle(
+                      text: AppInformation.companyName,
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     )
@@ -75,7 +75,7 @@ class _AboutOptionContent extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              Assets.illustrations.pastelcode.svg(
+              AppInformation.companyLogo.svg(
                 height: 75,
               ),
             ],
