@@ -94,6 +94,7 @@ class _AboutOptionContent extends StatelessWidget {
               uri: AppInformation.repository,
             );
           },
+          tooltip: 'Open Github repository',
           icon: const Icon(
             FlutterRemix.github_line,
           ),

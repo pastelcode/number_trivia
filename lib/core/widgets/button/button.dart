@@ -12,6 +12,7 @@ class Button extends StatelessWidget {
     required this.title,
     this.isPrimary = false,
     this.isVertical = false,
+    this.tooltip = '',
   });
 
   /// The callback when button is pressed.
@@ -28,6 +29,9 @@ class Button extends StatelessWidget {
 
   /// Whether [icon] and [title] should be in a [Row] instead of [Column].
   final bool isVertical;
+
+  /// The tooltip to show on long press.
+  final String tooltip;
 
   @override
   Widget build(
@@ -51,22 +55,25 @@ class Button extends StatelessWidget {
     const mainAxisAlignment = MainAxisAlignment.center;
     const mainAxisSize = MainAxisSize.min;
 
-    return TextButton(
-      onPressed: onPressed,
-      style: TextButton.styleFrom(
-        foregroundColor: isPrimary ? theme.colorScheme.primary : null,
+    return Tooltip(
+      message: tooltip,
+      child: TextButton(
+        onPressed: onPressed,
+        style: TextButton.styleFrom(
+          foregroundColor: isPrimary ? theme.colorScheme.primary : null,
+        ),
+        child: isVertical
+            ? Column(
+                mainAxisAlignment: mainAxisAlignment,
+                mainAxisSize: mainAxisSize,
+                children: children,
+              )
+            : Row(
+                mainAxisAlignment: mainAxisAlignment,
+                mainAxisSize: mainAxisSize,
+                children: children,
+              ),
       ),
-      child: isVertical
-          ? Column(
-              mainAxisAlignment: mainAxisAlignment,
-              mainAxisSize: mainAxisSize,
-              children: children,
-            )
-          : Row(
-              mainAxisAlignment: mainAxisAlignment,
-              mainAxisSize: mainAxisSize,
-              children: children,
-            ),
     );
   }
 }
