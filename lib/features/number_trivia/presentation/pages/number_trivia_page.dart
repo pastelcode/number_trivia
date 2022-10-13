@@ -50,6 +50,10 @@ class NumberTriviaPage extends StatelessWidget {
               height: 20,
             ),
             const _NumberForm(),
+            const SizedBox(
+              height: 80,
+            ),
+            const MyBannerAd(),
           ],
         ),
       ),
