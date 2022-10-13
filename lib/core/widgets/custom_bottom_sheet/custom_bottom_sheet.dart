@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:number_trivia/core/theme/theme.dart';
+import 'package:number_trivia/core/widgets/custom_back_button/custom_back_button.dart';
 
 /// Shows a custom modal bottom sheet.
 ///
@@ -66,22 +67,19 @@ class _CustomBottomSheet extends StatelessWidget {
               pinned: true,
               centerTitle: false,
               title: title != null
-                  ? Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          DefaultTextStyle.merge(
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
-                            child: title!,
+                  ? Row(
+                      children: <Widget>[
+                        const CustomBackButton(),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        DefaultTextStyle.merge(
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
                           ),
-                          const CloseButton(),
-                        ],
-                      ),
+                          child: title!,
+                        ),
+                      ],
                     )
                   : null,
               automaticallyImplyLeading: false,
