@@ -4,6 +4,7 @@ import 'package:flutter_remix/flutter_remix.dart';
 import 'package:number_trivia/core/config/app_information.dart';
 import 'package:number_trivia/core/presentation/bloc/bloc.dart';
 import 'package:number_trivia/core/theme/theme.dart';
+import 'package:number_trivia/core/utils/utils.dart';
 import 'package:number_trivia/core/widgets/widgets.dart';
 import 'package:number_trivia/gen/assets.gen.dart';
 

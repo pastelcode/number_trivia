@@ -56,7 +56,11 @@ class _AboutOptionContent extends StatelessWidget {
           height: 50,
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            launchUri(
+              uri: AppInformation.companyWebsite,
+            );
+          },
           child: Column(
             children: <Widget>[
               Text.rich(
@@ -85,7 +89,11 @@ class _AboutOptionContent extends StatelessWidget {
           height: 50,
         ),
         Button(
-          onPressed: () {},
+          onPressed: () {
+            launchUri(
+              uri: AppInformation.repository,
+            );
+          },
           icon: const Icon(
             FlutterRemix.github_line,
           ),
