@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:number_trivia/core/theme/theme.dart';
 import 'package:number_trivia/core/widgets/custom_back_button/custom_back_button.dart';
 
@@ -14,16 +15,15 @@ Future<T?> showCustomModalBottomSheet<T>({
     horizontal: 20,
   ),
 }) async {
-  final width = MediaQuery.of(
-    context,
-  ).size.width;
-
-  return showModalBottomSheet<T>(
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      systemNavigationBarColor: Colors.transparent,
+    ),
+  );
+  final result = await showModalBottomSheet<T>(
     context: context,
     isScrollControlled: true,
-    constraints: BoxConstraints(
-      maxWidth: width * 0.95,
-    ),
     builder: (
       BuildContext context,
     ) {
@@ -34,6 +34,13 @@ Future<T?> showCustomModalBottomSheet<T>({
       );
     },
   );
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      systemNavigationBarColor: Colors.transparent,
+    ),
+  );
+  return result;
 }
 
 class _CustomBottomSheet extends StatelessWidget {
@@ -54,7 +61,6 @@ class _CustomBottomSheet extends StatelessWidget {
     return DraggableScrollableSheet(
       expand: false,
       maxChildSize: 0.8,
-      initialChildSize: 0.4,
       builder: (
         BuildContext context,
         ScrollController scrollController,
