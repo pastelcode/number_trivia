@@ -103,6 +103,7 @@ void main() {
       const numberTriviaModel = NumberTriviaModel(
         number: 1,
         text: 'Test',
+        found: true,
       );
 
       test(

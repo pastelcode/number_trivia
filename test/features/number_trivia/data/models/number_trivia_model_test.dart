@@ -9,6 +9,7 @@ void main() {
   const numberTriviaModel = NumberTriviaModel(
     text: 'Test text',
     number: 1,
+    found: true,
   );
 
   test(

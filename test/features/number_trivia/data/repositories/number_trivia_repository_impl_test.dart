@@ -45,6 +45,7 @@ void main() {
       const numberTriviaModel = NumberTriviaModel(
         text: 'test trivia',
         number: number,
+        found: true,
       );
       final numberTrivia = numberTriviaModel.toEntity();
 
