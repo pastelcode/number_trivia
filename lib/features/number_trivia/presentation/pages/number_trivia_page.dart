@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_remix/flutter_remix.dart';
-import 'package:number_trivia/core/widgets/widgets.dart';
+import 'package:number_trivia/core/presentation/widgets/widgets.dart';
 import 'package:number_trivia/features/number_trivia/domain/entities/entities.dart';
 import 'package:number_trivia/features/number_trivia/presentation/bloc/bloc.dart';
 import 'package:number_trivia/gen/assets.gen.dart';

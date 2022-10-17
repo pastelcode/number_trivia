@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:number_trivia/core/presentation/widgets/custom_back_button/custom_back_button.dart';
 import 'package:number_trivia/core/theme/theme.dart';
-import 'package:number_trivia/core/widgets/custom_back_button/custom_back_button.dart';
 
 /// Shows a custom modal bottom sheet.
 ///
