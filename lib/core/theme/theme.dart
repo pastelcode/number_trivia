@@ -60,13 +60,6 @@ mixin ApplicationTheme {
       bottomSheetTheme: BottomSheetThemeData(
         modalBackgroundColor: colorScheme.surface,
         clipBehavior: Clip.hardEdge,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            top: Radius.circular(
-              ApplicationTheme.borderRadius,
-            ),
-          ),
-        ),
       ),
       dialogTheme: DialogTheme(
         backgroundColor: colorScheme.surface,
