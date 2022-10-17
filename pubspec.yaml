@@ -106,11 +106,12 @@ flutter_icons:
   remove_alpha_ios: true
   image_path: assets/images/logo.png
   adaptive_icon_background: assets/images/background_logo.png
-  adaptive_icon_foreground: assets/images/foreground_logo.png
+  adaptive_icon_foreground: assets/images/foreground_logo_small.png
 
 flutter_native_splash:
   android: true
   ios: true
-  color: '#003566'
-  image: assets/images/foreground_logo.png
-  branding: assets/images/foreground_logo.png
+  color: '#FBFCFD'
+  color_dark: '#191C1D'
+  image: assets/images/foreground_logo_dark.png
+  image_dark: assets/images/foreground_logo.png
