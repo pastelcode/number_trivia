@@ -18,6 +18,7 @@ class CustomBackButton extends StatelessWidget {
       tooltip: 'Back',
       icon: const Icon(
         FlutterRemix.arrow_left_line,
+        size: 20,
       ),
       onPressed: () {
         Navigator.maybePop(
