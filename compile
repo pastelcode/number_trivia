@@ -1,0 +1,17 @@
+#!/bin/bash
+
+PACKAGE_TYPE=$1
+
+echo "Action: build"
+
+if [ "$PACKAGE_TYPE" != "ios" ] && [ "$PACKAGE_TYPE" != "ipa" ] && [ "$PACKAGE_TYPE" != "apk" ] && [ "$PACKAGE_TYPE" != "appbundle" ]; then
+    echo "ERROR: Invalid operating system"
+    exit 1
+else
+    echo "Package type: $PACKAGE_TYPE"
+fi
+
+EXEC="flutter build $PACKAGE_TYPE --obfuscate --split-debug-info=debug_info"
+echo ""
+echo "> $EXEC"
+$EXEC
