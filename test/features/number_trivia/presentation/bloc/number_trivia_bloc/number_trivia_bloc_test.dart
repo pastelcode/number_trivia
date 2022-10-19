@@ -99,6 +99,7 @@ void main() {
         () async {
           // arrange
           setUpMockInputConverterSuccess();
+          setUpMockGetNumberTriviaSuccess();
 
           // act
           numberTriviaBloc.add(

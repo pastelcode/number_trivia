@@ -80,7 +80,7 @@ should return a valid model when the JSON number is regarded as a double''',
           final result = numberTriviaModel.toJson();
 
           // assert
-          const expectedJson = '{"text":"Test text","number":1}';
+          const expectedJson = '{"text":"Test text","number":1,"found":true}';
           expect(
             result,
             expectedJson,

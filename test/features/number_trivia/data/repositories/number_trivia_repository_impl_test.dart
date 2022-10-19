@@ -17,10 +17,10 @@ class MockNumberTriviaLocalDataSource extends Mock
 class MockNetworkInfo extends Mock with NetworkInfo {}
 
 void main() {
-  late final NumberTriviaRepositoryImpl repository;
-  late final MockNumberTriviaRemoteDataSource remoteDataSource;
-  late final MockNumberTriviaLocalDataSource localDataSource;
-  late final MockNetworkInfo networkInfo;
+  late NumberTriviaRepositoryImpl repository;
+  late MockNumberTriviaRemoteDataSource remoteDataSource;
+  late MockNumberTriviaLocalDataSource localDataSource;
+  late MockNetworkInfo networkInfo;
 
   setUp(
     () {
@@ -67,7 +67,9 @@ void main() {
           when(
             () {
               return remoteDataSource.getNumberTrivia(
-                number: number,
+                number: any(
+                  named: 'number',
+                ),
                 type: numberTriviaType,
               );
             },
@@ -76,6 +78,19 @@ void main() {
               _,
             ) async {
               return numberTriviaModel;
+            },
+          );
+          when(
+            () {
+              return localDataSource.cacheNumberTrivia(
+                triviaToCache: numberTriviaModel,
+              );
+            },
+          ).thenAnswer(
+            (
+              _,
+            ) async {
+              return;
             },
           );
 
